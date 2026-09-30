@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+@font-face{font-family:'Ethnocentric';src:url('assets/fonts/Ethnocentric-Regular.otf') format('opentype');font-weight:400;font-display:swap}
+@font-face{font-family:'ManropeLocal';src:url('assets/fonts/Manrope-Variable.ttf') format('truetype');font-weight:200;font-display:swap}
+html{scroll-behavior:smooth}
+body{margin:0;background:#F7F8FA;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+a:hover{color:#FF4D3D}
+summary::-webkit-details-marker{display:none}
+input,select,textarea{font-family:inherit}
+@keyframes sup4-rail{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes sup4-blink{0%,55%{opacity:1}56%,100%{opacity:.25}}
+[data-navgroup]{display:none}
+@media (min-width:900px){[data-navgroup]{display:inline-block}[data-navgroup][data-drop]{display:block}}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{animation:none !important;transition:none !important}[data-rail]{animation:sup4-rail 70s linear infinite !important}
+/* el carrusel rota solo por pedido explícito: sin transición el cambio sería un salto seco */
+[data-cslide]{transition:transform 1.15s cubic-bezier(.4,.02,.2,1),opacity 1.15s cubic-bezier(.4,.02,.2,1) !important}}
+</style>
+</helmet>
+
+<div style="font-family:'Manrope','ManropeLocal',system-ui,sans-serif;color:#111418;background:#F7F8FA">
+
+  <!-- NAV -->
+  <nav data-nav="1" style="position:fixed;top:0;left:0;right:0;z-index:900;background:rgba(247,248,250,0);backdrop-filter:blur(0px);border-bottom:1px solid rgba(17,20,24,0);transition:background-color .3s ease,border-color .3s ease,backdrop-filter .3s ease">
+    <div style="max-width:1320px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:14px clamp(16px,3vw,32px)">
+      <a href="#top" style="display:flex;align-items:center"><img data-navlogo="1" src="assets/mark-negative-alpha.png" alt="Suprads" style="height:34px;width:auto;display:block"></a>
+      <div style="display:flex;align-items:center;gap:clamp(10px,1.8vw,28px)">
+        <div data-drop="1" style="position:relative" data-navgroup="1">
+          <button data-droptrigger="1" type="button" style="display:inline-flex;align-items:center;gap:7px;background:none;border:0;padding:10px 2px;cursor:pointer;font-family:inherit;font-size:13.5px;font-weight:600;color:inherit">Servicios <span style="font-size:8px;opacity:.6">▼</span></button>
+          <div data-dropmenu="1" style="position:absolute;left:-14px;top:100%;min-width:290px;padding:10px 0;background:#111418;color:#E6E8EC;border-bottom:3px solid #FF4D3D;border-radius:0 0 15px 0;opacity:0;visibility:hidden;transform:translateY(-6px);transition:opacity .25s ease,transform .25s ease,visibility .25s">
+            <a href="#servicios" style="display:block;padding:9px 18px;font-size:13.5px">Sistemas de Captación por Performance</a>
+            <a href="#servicios" style="display:block;padding:9px 18px;font-size:13.5px">Automatización &amp; Chatbots</a>
+            <a href="#servicios" style="display:block;padding:9px 18px;font-size:13.5px">Performance Ads</a>
+            <a href="#servicios" style="display:block;padding:9px 18px;font-size:13.5px">Web &amp; E-commerce</a>
+          </div>
+        </div>
+        <a data-navgroup="1" href="#enfoque" style="font-size:13.5px;font-weight:600">Enfoque</a>
+        <a data-navgroup="1" href="#especializados" style="font-size:13.5px;font-weight:600">Especialidades</a>
+        <a data-navgroup="1" href="#faq" style="font-size:13.5px;font-weight:600">FAQ</a>
+        <a href="#contacto" data-navcta="1" style="display:inline-flex;align-items:center;gap:10px;padding:12px 20px;border-radius:15px 0 15px 0;background:#FF4D3D;color:#F7F8FA;font-size:14px;font-weight:700" style-hover="background:#111418;color:#F7F8FA">Contacto
+          <svg width="15" height="15" viewBox="0 0 19 19" aria-hidden="true"><path d="M16.625 2.375V13.0428H15.4441V4.3826L3.20166 16.625L2.375 15.759L14.578 3.55594H5.91782V2.375H16.625Z" fill="currentColor"></path></svg>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO SPLIT -->
+  <section id="top" style="position:relative;background:#111418;color:#E6E8EC;overflow:hidden">
+    <div style="position:relative;max-width:1320px;margin:0 auto;padding:clamp(104px,15vh,150px) clamp(16px,3vw,32px) clamp(48px,8vh,90px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(400px,100%),1fr));gap:clamp(28px,4vw,64px);align-items:center">
+
+      <div>
+        <div style="display:flex;align-items:center;gap:10px;font-size:11px;letter-spacing:.22em;font-weight:600;color:#FF8A3D">
+          <span style="width:6px;height:6px;background:#FF4D3D;animation:sup4-blink 3s steps(1,end) infinite"></span>#SistemasQueTraenClientes
+        </div>
+
+        <div style="display:flex;align-items:center;gap:14px;margin-top:22px">
+          <div style="display:flex">
+            <span data-avatar="1" style="width:34px;height:34px;border-radius:50%;background:linear-gradient(130deg,#FF4D3D,#FF8A3D);border:2px solid #111418"></span>
+            <span data-avatar="2" style="width:34px;height:34px;border-radius:50%;background:#2A2F37;border:2px solid #111418;margin-left:-12px"></span>
+            <span data-avatar="3" style="width:34px;height:34px;border-radius:50%;background:#3D444E;border:2px solid #111418;margin-left:-12px"></span>
+          </div>
+          <div style="font-size:12.5px;line-height:1.4;color:rgba(230,232,236,.66)">Marcas que operan su circuito<br><strong style="color:#E6E8EC;font-weight:700">con Suprads</strong></div>
+        </div>
+
+        <h1 style="margin:26px 0 0;max-width:640px;font-family:'Ethnocentric',sans-serif;font-size:clamp(20px,2.9vw,42px);line-height:1.18;text-transform:uppercase;text-wrap:balance">Sistemas que traen clientes.</h1>
+        <p style="margin:18px 0 0;max-width:560px;font-size:clamp(15px,1.25vw,19px);line-height:1.6;color:rgba(230,232,236,.72)">No reportes que expliquen por qué no llegaron.</p>
+        <p style="margin:14px 0 0;max-width:560px;font-size:clamp(14.5px,1.15vw,17px);line-height:1.65;color:rgba(230,232,236,.62)">Construimos y operamos el circuito completo: captación, conversión, automatización y cierre previo. Y en captación, nuestro modelo es directo: <strong style="color:#FF8A3D;font-weight:700">cobramos cuando ganás.</strong></p>
+
+        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:30px">
+          <a href="#TODO-CALENDLY-URL" data-placeholder="CALENDLY_URL" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:12px;padding:17px 26px;border-radius:15px 0 15px 0;background:#FF4D3D;color:#F7F8FA;font-size:15px;font-weight:700" style-hover="background:#F7F8FA;color:#111418">Agendar llamada de diagnóstico
+            <svg width="16" height="16" viewBox="0 0 19 19" aria-hidden="true"><path d="M16.625 2.375V13.0428H15.4441V4.3826L3.20166 16.625L2.375 15.759L14.578 3.55594H5.91782V2.375H16.625Z" fill="currentColor"></path></svg>
+          </a>
+          <a href="#servicios" style="padding:16px 24px;border-radius:15px 0 15px 0;border:1px solid rgba(230,232,236,.34);font-size:15px;font-weight:600;color:#E6E8EC" style-hover="background:#E6E8EC;color:#111418">Nuestros servicios</a>
+        </div>
+        <div style="margin-top:14px;font-size:10px;letter-spacing:.2em;color:rgba(230,232,236,.55)">30 MINUTOS · SIN COSTO · SIN COMPROMISO</div>
+      </div>
+
+      <!-- CARRUSEL COVERFLOW -->
+      <div data-carousel="1" style="position:relative;height:clamp(300px,44vh,430px);display:flex;align-items:center;justify-content:center">
+        <div data-stage="1" style="position:relative;width:100%;height:100%;perspective:1400px">
+          <div data-cslide="1" style="position:absolute;top:50%;left:50%;width:clamp(180px,20vw,260px);aspect-ratio:3/4;border-radius:18px;overflow:hidden;background:#171A1F;border:1px solid rgba(230,232,236,.14);box-shadow:0 26px 54px rgba(0,0,0,.42);transition:transform .9s cubic-bezier(.22,1,.36,1),opacity .9s ease,filter .9s ease;will-change:transform">
+            <iframe title="" aria-hidden="true" tabindex="-1" src="https://www.youtube-nocookie.com/embed/x91MPoITQ3I?autoplay=1&amp;mute=1&amp;controls=0&amp;loop=1&amp;playlist=x91MPoITQ3I&amp;playsinline=1&amp;modestbranding=1&amp;rel=0&amp;disablekb=1&amp;iv_load_policy=3&amp;fs=0&amp;start=4" allow="autoplay; encrypted-media" frameborder="0" style="position:absolute;top:50%;left:50%;width:max(100%,177.78%);height:max(100%,177.78%);transform:translate(-50%,-50%);border:0;pointer-events:none"></iframe>
+          </div>
+          <div data-cslide="2" style="position:absolute;top:50%;left:50%;width:clamp(180px,20vw,260px);aspect-ratio:3/4;border-radius:18px;overflow:hidden;background:#171A1F;border:1px solid rgba(230,232,236,.14);box-shadow:0 26px 54px rgba(0,0,0,.42);transition:transform .9s cubic-bezier(.22,1,.36,1),opacity .9s ease,filter .9s ease;will-change:transform">
+            <iframe title="" aria-hidden="true" tabindex="-1" src="https://www.youtube-nocookie.com/embed/x91MPoITQ3I?autoplay=1&amp;mute=1&amp;controls=0&amp;loop=1&amp;playlist=x91MPoITQ3I&amp;playsinline=1&amp;modestbranding=1&amp;rel=0&amp;disablekb=1&amp;iv_load_policy=3&amp;fs=0&amp;start=26" allow="autoplay; encrypted-media" frameborder="0" style="position:absolute;top:50%;left:50%;width:max(100%,177.78%);height:max(100%,177.78%);transform:translate(-50%,-50%);border:0;pointer-events:none"></iframe>
+          </div>
+          <div data-cslide="3" style="position:absolute;top:50%;left:50%;width:clamp(180px,20vw,260px);aspect-ratio:3/4;border-radius:18px;overflow:hidden;background:#171A1F;border:1px solid rgba(230,232,236,.14);box-shadow:0 26px 54px rgba(0,0,0,.42);transition:transform .9s cubic-bezier(.22,1,.36,1),opacity .9s ease,filter .9s ease;will-change:transform">
+            <iframe title="" aria-hidden="true" tabindex="-1" src="https://www.youtube-nocookie.com/embed/x91MPoITQ3I?autoplay=1&amp;mute=1&amp;controls=0&amp;loop=1&amp;playlist=x91MPoITQ3I&amp;playsinline=1&amp;modestbranding=1&amp;rel=0&amp;disablekb=1&amp;iv_load_policy=3&amp;fs=0&amp;start=48" allow="autoplay; encrypted-media" frameborder="0" style="position:absolute;top:50%;left:50%;width:max(100%,177.78%);height:max(100%,177.78%);transform:translate(-50%,-50%);border:0;pointer-events:none"></iframe>
+          </div>
+          <div data-cslide="4" style="position:absolute;top:50%;left:50%;width:clamp(180px,20vw,260px);aspect-ratio:3/4;border-radius:18px;overflow:hidden;background:#171A1F;border:1px solid rgba(230,232,236,.14);box-shadow:0 26px 54px rgba(0,0,0,.42);transition:transform .9s cubic-bezier(.22,1,.36,1),opacity .9s ease,filter .9s ease;will-change:transform">
+            <iframe title="" aria-hidden="true" tabindex="-1" src="https://www.youtube-nocookie.com/embed/x91MPoITQ3I?autoplay=1&amp;mute=1&amp;controls=0&amp;loop=1&amp;playlist=x91MPoITQ3I&amp;playsinline=1&amp;modestbranding=1&amp;rel=0&amp;disablekb=1&amp;iv_load_policy=3&amp;fs=0&amp;start=70" allow="autoplay; encrypted-media" frameborder="0" style="position:absolute;top:50%;left:50%;width:max(100%,177.78%);height:max(100%,177.78%);transform:translate(-50%,-50%);border:0;pointer-events:none"></iframe>
+          </div>
+
+          <div data-badge="top" style="position:absolute;right:0;top:2%;z-index:40;padding:14px 18px;border-radius:16px;background:#F7F8FA;color:#111418;box-shadow:0 18px 38px rgba(0,0,0,.32);pointer-events:none">
+            <div style="font-size:9px;letter-spacing:.2em;color:#FF4D3D">ETAPA ACTIVA</div>
+            <div data-badgestage="1" style="margin-top:6px;font-family:'Ethnocentric',sans-serif;font-size:12px;line-height:1.25;text-transform:uppercase;max-width:150px">Captación</div>
+          </div>
+
+          <div data-badge="bottom" style="position:absolute;left:0;bottom:4%;z-index:40;display:flex;align-items:center;gap:11px;padding:12px 16px;border-radius:16px;background:#111418;border:1px solid rgba(230,232,236,.16);box-shadow:0 18px 38px rgba(0,0,0,.4);pointer-events:none">
+            <span style="width:8px;height:8px;background:#FF4D3D;border-radius:50%;animation:sup4-blink 3s steps(1,end) infinite"></span>
+            <div>
+              <div style="font-size:9px;letter-spacing:.2em;color:rgba(230,232,236,.6)">SISTEMA</div>
+              <div style="margin-top:4px;font-size:13px;font-weight:700;color:#E6E8EC">Operando en vivo</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PLATAFORMAS -->
+    <div style="position:relative;border-top:1px solid rgba(230,232,236,.12);padding:18px 0;overflow:hidden">
+      <div style="max-width:1320px;margin:0 auto;padding:0 clamp(16px,3vw,32px) 10px;font-size:9.5px;letter-spacing:.24em;color:rgba(230,232,236,.55)">PLATAFORMAS QUE OPERAMOS</div>
+      <div style="overflow:hidden">
+        <div data-rail="1" style="display:flex;width:max-content;white-space:nowrap;animation:sup4-rail 22s linear infinite;font-family:'Ethnocentric',sans-serif;font-size:clamp(12px,1.5vw,19px);text-transform:uppercase;color:rgba(230,232,236,.42)">
+          <div style="display:flex;align-items:center">
+            <span style="padding:0 clamp(12px,1.6vw,26px)">META ADS</span><span style="color:#FF4D3D">/</span><span style="padding:0 clamp(12px,1.6vw,26px)">GOOGLE ADS</span><span style="color:#FF4D3D">/</span><span style="padding:0 clamp(12px,1.6vw,26px)">TIKTOK ADS</span><span style="color:#FF4D3D">/</span><span style="padding:0 clamp(12px,1.6vw,26px)">WHATSAPP API</span><span style="color:#FF4D3D">/</span><span style="padding:0 clamp(12px,1.6vw,26px)">SHOPIFY</span><span style="color:#FF4D3D">/</span><span style="padding:0 clamp(12px,1.6vw,26px)">TIENDANUBE</span><span style="color:#FF4D3D">/</span><span style="padding:0 clamp(12px,1.6vw,26px)">WOOCOMMERCE</span><span style="color:#FF4D3D">/</span>
+          </div>
+          <div style="display:flex;align-items:center" aria-hidden="true">
+            <span style="padding:0 clamp(12px,1.6vw,26px)">META ADS</span><span style="color:#FF4D3D">/</span><span style="padding:0 clamp(12px,1.6vw,26px)">GOOGLE ADS</span><span style="color:#FF4D3D">/</span><span style="padding:0 clamp(12px,1.6vw,26px)">TIKTOK ADS</span><span style="color:#FF4D3D">/</span><span style="padding:0 clamp(12px,1.6vw,26px)">WHATSAPP API</span><span style="color:#FF4D3D">/</span><span style="padding:0 clamp(12px,1.6vw,26px)">SHOPIFY</span><span style="color:#FF4D3D">/</span><span style="padding:0 clamp(12px,1.6vw,26px)">TIENDANUBE</span><span style="color:#FF4D3D">/</span><span style="padding:0 clamp(12px,1.6vw,26px)">WOOCOMMERCE</span><span style="color:#FF4D3D">/</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENFOQUE / 3 PILARES -->
+  <section id="enfoque" style="position:relative;background:#F7F8FA;padding:clamp(56px,10vh,120px) clamp(16px,3vw,32px);overflow:hidden">
+    <img src="assets/trama-clara.png" alt="" aria-hidden="true" style="position:absolute;left:-8%;bottom:-14%;width:min(46vw,560px);opacity:.35;pointer-events:none">
+    <div style="position:relative;max-width:1320px;margin:0 auto">
+      <h2 data-reveal="1" style="margin:0;max-width:900px;font-family:'Ethnocentric',sans-serif;font-size:clamp(17px,2.4vw,34px);line-height:1.2;text-transform:uppercase">Captación <span style="color:#FF4D3D">+</span> Automatización <span style="color:#FF4D3D">+</span> Performance</h2>
+      <p data-reveal="1" style="margin:18px 0 0;max-width:620px;font-size:clamp(15px,1.2vw,18px);line-height:1.6;color:rgba(17,20,24,.66)">Operamos las cuatro etapas del circuito con métricas abiertas, tracking propio y CAPI activo. Todo incluido en el fee.</p>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:clamp(14px,1.8vw,24px);margin-top:clamp(30px,5vh,54px)">
+        <div data-reveal="1" data-pillar="1" style="position:relative;padding:clamp(22px,2.4vw,32px);border-radius:18px 0 18px 0;background:#FFFFFF;border:1px solid rgba(17,20,24,.08);box-shadow:0 14px 30px rgba(17,20,24,.06);transition:transform .35s ease,box-shadow .35s ease">
+          <div style="font-family:'Ethnocentric',sans-serif;font-size:26px;color:#FF4D3D;line-height:1">01</div>
+          <h3 style="margin:16px 0 0;font-family:'Ethnocentric',sans-serif;font-size:clamp(13px,1.1vw,16px);line-height:1.3;text-transform:uppercase">Riesgo compartido de verdad</h3>
+          <p style="margin:12px 0 0;font-size:14.5px;line-height:1.6;color:rgba(17,20,24,.64)">En captación cobramos cuando ganás. El modelo comercial está atado al resultado, no al reporte.</p>
+        </div>
+        <div data-reveal="1" data-pillar="2" style="position:relative;padding:clamp(22px,2.4vw,32px);border-radius:18px 0 18px 0;background:#FFFFFF;border:1px solid rgba(17,20,24,.08);box-shadow:0 14px 30px rgba(17,20,24,.06);transition:transform .35s ease,box-shadow .35s ease">
+          <div style="font-family:'Ethnocentric',sans-serif;font-size:26px;color:#FF4D3D;line-height:1">02</div>
+          <h3 style="margin:16px 0 0;font-family:'Ethnocentric',sans-serif;font-size:clamp(13px,1.1vw,16px);line-height:1.3;text-transform:uppercase">Operación de punta a punta</h3>
+          <p style="margin:12px 0 0;font-size:14.5px;line-height:1.6;color:rgba(17,20,24,.64)">Pauta, creatividades, automatización y cierre previo los operamos nosotros. No entregamos un plan para que lo ejecute otro.</p>
+        </div>
+        <div data-reveal="1" data-pillar="3" style="position:relative;padding:clamp(22px,2.4vw,32px);border-radius:18px 0 18px 0;background:#111418;color:#E6E8EC;border:1px solid rgba(17,20,24,.08);box-shadow:0 14px 30px rgba(17,20,24,.12);transition:transform .35s ease,box-shadow .35s ease">
+          <div style="display:inline-block;margin-bottom:14px;padding:6px 10px;border-radius:10px 0 10px 0;background:#FF8A3D;color:#111418;font-size:9px;letter-spacing:.2em;font-weight:700">INFRAESTRUCTURA</div>
+          <div style="font-family:'Ethnocentric',sans-serif;font-size:26px;color:#FF8A3D;line-height:1">03</div>
+          <h3 style="margin:16px 0 0;font-family:'Ethnocentric',sans-serif;font-size:clamp(13px,1.1vw,16px);line-height:1.3;text-transform:uppercase">Infraestructura blindada</h3>
+          <p style="margin:12px 0 0;font-size:14.5px;line-height:1.6;color:rgba(230,232,236,.68)">Tracking propio y CAPI activo para que la medición no dependa del navegador del usuario.</p>
+        </div>
+      </div>
+
+      <div data-reveal="1" style="margin-top:clamp(26px,4vh,44px)">
+        <a href="#servicios" style="display:inline-flex;align-items:center;gap:11px;padding:15px 24px;border-radius:15px 0 15px 0;border:1px solid rgba(17,20,24,.28);font-size:15px;font-weight:600" style-hover="background:#111418;color:#F7F8FA">Conocé los cuatro módulos
+          <svg width="7" height="12" viewBox="0 0 6 11" aria-hidden="true"><path d="M0.628906 0L0 0.628906L4.49805 5.12695L0 9.625L0.628906 10.2539L5.44141 5.44141L5.74219 5.12695L5.44141 4.8125L0.628906 0Z" fill="currentColor"></path></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section id="servicios" style="background:#E6E8EC;padding:clamp(56px,10vh,120px) clamp(16px,3vw,32px)">
+    <div style="max-width:1320px;margin:0 auto">
+      <div style="display:flex;align-items:center;gap:14px;font-size:9.5px;letter-spacing:.24em;color:rgba(17,20,24,.6)">
+        <span style="color:#FF4D3D">SERVICIOS</span><span style="flex:1;height:1px;background:rgba(17,20,24,.16)"></span>
+      </div>
+      <h2 data-reveal="1" style="margin:clamp(18px,3vh,28px) 0 0;max-width:800px;font-family:'Ethnocentric',sans-serif;font-size:clamp(17px,2.4vw,34px);line-height:1.2;text-transform:uppercase">Cuatro módulos. Un solo sistema.</h2>
+
+      <div data-reveal="1" data-srow="1" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(340px,100%),1fr));gap:clamp(22px,3vw,56px);align-items:center;margin-top:clamp(34px,6vh,70px)">
+        <div>
+          <div style="font-family:'Ethnocentric',sans-serif;font-size:clamp(28px,4vw,58px);line-height:1;color:rgba(17,20,24,.14)">01</div>
+          <h3 style="margin:14px 0 0;font-family:'Ethnocentric',sans-serif;font-size:clamp(14px,1.5vw,22px);line-height:1.25;text-transform:uppercase">Sistemas de Captación por Performance</h3>
+          <div style="display:inline-block;margin-top:14px;padding:8px 12px;border-radius:10px 0 10px 0;background:#FF4D3D;color:#F7F8FA;font-size:9.5px;letter-spacing:.2em;font-weight:700">SOLO POR RESULTADOS</div>
+          <p style="margin:16px 0 0;max-width:480px;font-size:15px;line-height:1.62;color:rgba(17,20,24,.66)">Construimos y operamos el circuito de captación completo: pauta, landing, automatización y cierre previo. Cobramos cuando ganás.</p>
+          <ul style="margin:18px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:9px;font-size:14px;color:rgba(17,20,24,.7)">
+            <li style="display:flex;gap:10px"><span style="color:#FF4D3D">/</span>Circuito completo operado por nosotros</li>
+            <li style="display:flex;gap:10px"><span style="color:#FF4D3D">/</span>Modelo comercial atado al resultado</li>
+            <li style="display:flex;gap:10px"><span style="color:#FF4D3D">/</span>Métricas abiertas desde el primer día</li>
+          </ul>
+          <a href="#contacto" style="display:inline-flex;align-items:center;gap:10px;margin-top:22px;font-size:14.5px;font-weight:700;color:#FF4D3D">Ver más <span>→</span></a>
+        </div>
+        <div style="position:relative;border-radius:18px 0 18px 0;overflow:hidden;aspect-ratio:16/11;background:#111418;box-shadow:0 20px 44px rgba(17,20,24,.14)">
+          <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=2000&q=80" alt="Sistemas de captación — equipo operando" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block">
+        </div>
+      </div>
+
+      <div data-reveal="1" data-srow="2" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(340px,100%),1fr));gap:clamp(22px,3vw,56px);align-items:center;margin-top:clamp(34px,6vh,70px)">
+        <div style="position:relative;border-radius:18px 0 18px 0;overflow:hidden;aspect-ratio:16/11;background:#111418;box-shadow:0 20px 44px rgba(17,20,24,.14)">
+          <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=2000&q=80" alt="Automatización y chatbots" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block">
+        </div>
+        <div>
+          <div style="font-family:'Ethnocentric',sans-serif;font-size:clamp(28px,4vw,58px);line-height:1;color:rgba(17,20,24,.14)">02</div>
+          <h3 style="margin:14px 0 0;font-family:'Ethnocentric',sans-serif;font-size:clamp(14px,1.5vw,22px);line-height:1.25;text-transform:uppercase">Automatización &amp; Chatbots</h3>
+          <div style="display:inline-block;margin-top:14px;padding:8px 12px;border-radius:10px 0 10px 0;border:1px solid rgba(17,20,24,.26);font-size:9.5px;letter-spacing:.2em;font-weight:700;color:rgba(17,20,24,.72)">IMPLEMENTACIÓN + ABONO</div>
+          <p style="margin:16px 0 0;max-width:480px;font-size:15px;line-height:1.62;color:rgba(17,20,24,.66)">Automatización que ordena, califica y prepara la conversación comercial antes de que llegue a tu equipo.</p>
+          <ul style="margin:18px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:9px;font-size:14px;color:rgba(17,20,24,.7)">
+            <li style="display:flex;gap:10px"><span style="color:#FF4D3D">/</span>Calificación automática de consultas</li>
+            <li style="display:flex;gap:10px"><span style="color:#FF4D3D">/</span>Integración con WhatsApp y CRM</li>
+            <li style="display:flex;gap:10px"><span style="color:#FF4D3D">/</span>Cierre previo antes del contacto humano</li>
+          </ul>
+          <a href="#contacto" style="display:inline-flex;align-items:center;gap:10px;margin-top:22px;font-size:14.5px;font-weight:700;color:#FF4D3D">Ver más <span>→</span></a>
+        </div>
+      </div>
+
+      <div data-reveal="1" data-srow="3" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(340px,100%),1fr));gap:clamp(22px,3vw,56px);align-items:center;margin-top:clamp(34px,6vh,70px)">
+        <div>
+          <div style="font-family:'Ethnocentric',sans-serif;font-size:clamp(28px,4vw,58px);line-height:1;color:rgba(17,20,24,.14)">03</div>
+          <h3 style="margin:14px 0 0;font-family:'Ethnocentric',sans-serif;font-size:clamp(14px,1.5vw,22px);line-height:1.25;text-transform:uppercase">Performance Ads</h3>
+          <div style="display:inline-block;margin-top:14px;padding:8px 12px;border-radius:10px 0 10px 0;border:1px solid rgba(17,20,24,.26);font-size:9.5px;letter-spacing:.2em;font-weight:700;color:rgba(17,20,24,.72)">FEE BASE + VARIABLE</div>
+          <p style="margin:16px 0 0;max-width:480px;font-size:15px;line-height:1.62;color:rgba(17,20,24,.66)">Pauta y creatividades operadas por nosotros en Meta, Google y TikTok, con tracking propio y CAPI activo.</p>
+          <ul style="margin:18px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:9px;font-size:14px;color:rgba(17,20,24,.7)">
+            <li style="display:flex;gap:10px"><span style="color:#FF4D3D">/</span>Meta, Google y TikTok</li>
+            <li style="display:flex;gap:10px"><span style="color:#FF4D3D">/</span>Tracking propio y CAPI activo</li>
+            <li style="display:flex;gap:10px"><span style="color:#FF4D3D">/</span>Optimización continua sobre datos reales</li>
+          </ul>
+          <a href="#contacto" style="display:inline-flex;align-items:center;gap:10px;margin-top:22px;font-size:14.5px;font-weight:700;color:#FF4D3D">Ver más <span>→</span></a>
+        </div>
+        <div style="position:relative;border-radius:18px 0 18px 0;overflow:hidden;aspect-ratio:16/11;background:#111418;box-shadow:0 20px 44px rgba(17,20,24,.14)">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=2000&q=80" alt="Performance Ads — tablero de métricas" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block">
+        </div>
+      </div>
+
+      <div data-reveal="1" data-srow="4" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(340px,100%),1fr));gap:clamp(22px,3vw,56px);align-items:center;margin-top:clamp(34px,6vh,70px)">
+        <div style="position:relative;border-radius:18px 0 18px 0;overflow:hidden;aspect-ratio:16/11;background:#111418;box-shadow:0 20px 44px rgba(17,20,24,.14)">
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=2000&q=80" alt="Web y e-commerce" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block">
+        </div>
+        <div>
+          <div style="font-family:'Ethnocentric',sans-serif;font-size:clamp(28px,4vw,58px);line-height:1;color:rgba(17,20,24,.14)">04</div>
+          <h3 style="margin:14px 0 0;font-family:'Ethnocentric',sans-serif;font-size:clamp(14px,1.5vw,22px);line-height:1.25;text-transform:uppercase">Web &amp; E-commerce</h3>
+          <div style="display:inline-block;margin-top:14px;padding:8px 12px;border-radius:10px 0 10px 0;border:1px solid rgba(17,20,24,.26);font-size:9.5px;letter-spacing:.2em;font-weight:700;color:rgba(17,20,24,.72)">PRECIO FIJO POR PROYECTO</div>
+          <p style="margin:16px 0 0;max-width:480px;font-size:15px;line-height:1.62;color:rgba(17,20,24,.66)">Landings, sitios y e-commerce donde el circuito aterriza. Del click al contacto, sin fugas.</p>
+          <ul style="margin:18px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:9px;font-size:14px;color:rgba(17,20,24,.7)">
+            <li style="display:flex;gap:10px"><span style="color:#FF4D3D">/</span>Shopify, Tiendanube y WooCommerce</li>
+            <li style="display:flex;gap:10px"><span style="color:#FF4D3D">/</span>Medición instalada desde el lanzamiento</li>
+            <li style="display:flex;gap:10px"><span style="color:#FF4D3D">/</span>Precio cerrado por proyecto</li>
+          </ul>
+          <a href="#contacto" style="display:inline-flex;align-items:center;gap:10px;margin-top:22px;font-size:14.5px;font-weight:700;color:#FF4D3D">Ver más <span>→</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BANDA PROCESO -->
+  <section style="position:relative;background:#111418;color:#E6E8EC;overflow:hidden;padding:clamp(50px,9vh,110px) clamp(16px,3vw,32px)">
+    <img src="assets/trama-oscura.png" alt="" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.16;pointer-events:none">
+    <div style="position:relative;max-width:1320px;margin:0 auto">
+      <div style="display:flex;align-items:center;gap:14px;font-size:9.5px;letter-spacing:.24em;color:rgba(230,232,236,.6)">
+        <span style="color:#FF8A3D">CÓMO TRABAJAMOS</span><span style="flex:1;height:1px;background:rgba(230,232,236,.18)"></span>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:clamp(18px,2.4vw,34px);margin-top:clamp(26px,4vh,44px)">
+        <div data-reveal="1" style="border-top:2px solid #FF4D3D;padding-top:20px">
+          <div style="font-family:'Ethnocentric',sans-serif;font-size:clamp(26px,3.4vw,46px);line-height:1;color:#FF4D3D">01</div>
+          <h3 style="margin:14px 0 0;font-family:'Ethnocentric',sans-serif;font-size:clamp(13px,1.15vw,17px);line-height:1.3;text-transform:uppercase">Llamada de diagnóstico</h3>
+          <div style="margin-top:14px;font-size:9.5px;letter-spacing:.2em;color:rgba(230,232,236,.6)">30 MINUTOS · SIN COSTO · SIN COMPROMISO</div>
+        </div>
+        <div data-reveal="1" style="border-top:2px solid rgba(230,232,236,.2);padding-top:20px">
+          <div style="font-family:'Ethnocentric',sans-serif;font-size:clamp(26px,3.4vw,46px);line-height:1;color:rgba(230,232,236,.4)">02</div>
+          <h3 style="margin:14px 0 0;font-family:'Ethnocentric',sans-serif;font-size:clamp(13px,1.15vw,17px);line-height:1.3;text-transform:uppercase">Propuesta a medida</h3>
+          <div style="margin-top:14px;display:flex;align-items:baseline;gap:10px"><span style="font-size:clamp(22px,2.4vw,32px);font-weight:800;color:#FF8A3D">72</span><span style="font-size:10px;letter-spacing:.24em;color:rgba(230,232,236,.62)">HS HÁBILES</span></div>
+        </div>
+        <div data-reveal="1" style="border-top:2px solid rgba(230,232,236,.2);padding-top:20px">
+          <div style="font-family:'Ethnocentric',sans-serif;font-size:clamp(26px,3.4vw,46px);line-height:1;color:rgba(230,232,236,.4)">03</div>
+          <h3 style="margin:14px 0 0;font-family:'Ethnocentric',sans-serif;font-size:clamp(13px,1.15vw,17px);line-height:1.3;text-transform:uppercase">Implementación y operación con métricas abiertas</h3>
+          <div style="margin-top:14px;display:flex;flex-direction:column;gap:7px;font-size:9.5px;letter-spacing:.2em;color:rgba(230,232,236,.62)">
+            <span style="display:flex;align-items:center;gap:9px"><span style="width:6px;height:6px;background:#FF4D3D"></span>OPERACIÓN ACTIVA</span>
+            <span style="display:flex;align-items:center;gap:9px"><span style="width:6px;height:6px;background:#FF4D3D"></span>MÉTRICAS ABIERTAS</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ESPECIALIZADOS -->
+  <section id="especializados" style="background:#F7F8FA;padding:clamp(56px,10vh,120px) clamp(16px,3vw,32px)">
+    <div style="max-width:1320px;margin:0 auto">
+      <div style="display:flex;align-items:center;gap:14px;font-size:9.5px;letter-spacing:.24em;color:rgba(17,20,24,.6)">
+        <span style="color:#FF4D3D">ESPECIALIDADES</span><span style="flex:1;height:1px;background:rgba(17,20,24,.16)"></span>
+      </div>
+      <h2 data-reveal="1" style="margin:clamp(18px,3vh,28px) 0 clamp(26px,4vh,44px);max-width:800px;font-family:'Ethnocentric',sans-serif;font-size:clamp(16px,2.2vw,30px);line-height:1.22;text-transform:uppercase">Lo que no se ve también hace que funcione.</h2>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:1px;background:rgba(17,20,24,.14);border:1px solid rgba(17,20,24,.14)">
+        <div data-spec="1" style="background:#F7F8FA;padding:clamp(22px,2.4vw,32px);transition:background-color .3s ease,color .3s ease">
+          <div style="font-size:9.5px;letter-spacing:.2em;color:#FF4D3D">01</div>
+          <h3 style="margin:14px 0 0;font-family:'Ethnocentric',sans-serif;font-size:clamp(12.5px,1.05vw,15px);line-height:1.3;text-transform:uppercase">Transparencia total de costos</h3>
+          <p style="margin:12px 0 0;font-size:14px;line-height:1.6;opacity:.66">Sabés exactamente cuánto va a pauta, cuánto a herramientas y cuánto a la operación.</p>
+        </div>
+        <div data-spec="2" style="background:#F7F8FA;padding:clamp(22px,2.4vw,32px);transition:background-color .3s ease,color .3s ease">
+          <div style="font-size:9.5px;letter-spacing:.2em;color:#FF4D3D">02</div>
+          <h3 style="margin:14px 0 0;font-family:'Ethnocentric',sans-serif;font-size:clamp(12.5px,1.05vw,15px);line-height:1.3;text-transform:uppercase">Equipo directo</h3>
+          <p style="margin:12px 0 0;font-size:14px;line-height:1.6;opacity:.66">Hablás con quienes operan tu sistema, no con una capa intermedia de cuentas.</p>
+        </div>
+        <div data-spec="3" style="background:#F7F8FA;padding:clamp(22px,2.4vw,32px);transition:background-color .3s ease,color .3s ease">
+          <div style="font-size:9.5px;letter-spacing:.2em;color:#FF4D3D">03</div>
+          <h3 style="margin:14px 0 0;font-family:'Ethnocentric',sans-serif;font-size:clamp(12.5px,1.05vw,15px);line-height:1.3;text-transform:uppercase">Números en los que confiar</h3>
+          <p style="margin:12px 0 0;font-size:14px;line-height:1.6;opacity:.66">Tracking propio y CAPI activo: la medición no depende del navegador del usuario.</p>
+        </div>
+      </div>
+
+      <div data-reveal="1" style="margin-top:clamp(30px,5vh,54px);border-top:1px solid rgba(17,20,24,.16)">
+        <div style="display:flex;align-items:center;gap:14px;padding:14px 0;font-size:9.5px;letter-spacing:.24em;color:rgba(17,20,24,.6)"><span style="color:#FF4D3D">RESULTADOS</span><span style="flex:1;height:1px;background:rgba(17,20,24,.16)"></span></div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr));gap:clamp(14px,2vw,28px)">
+          <div style="border-top:1px solid rgba(17,20,24,.16);padding-top:16px"><div style="font-size:clamp(34px,4.4vw,60px);font-weight:800;line-height:.95;color:rgba(17,20,24,.3)">—</div><div style="margin-top:10px;font-size:13.5px;line-height:1.5;color:rgba(17,20,24,.62)">Descripción de la métrica</div><div style="margin-top:8px;font-size:9px;letter-spacing:.2em;color:#FF4D3D">TODO: MÉTRICA REAL</div></div>
+          <div style="border-top:1px solid rgba(17,20,24,.16);padding-top:16px"><div style="font-size:clamp(34px,4.4vw,60px);font-weight:800;line-height:.95;color:rgba(17,20,24,.3)">—</div><div style="margin-top:10px;font-size:13.5px;line-height:1.5;color:rgba(17,20,24,.62)">Descripción de la métrica</div><div style="margin-top:8px;font-size:9px;letter-spacing:.2em;color:#FF4D3D">TODO: MÉTRICA REAL</div></div>
+          <div style="border-top:1px solid rgba(17,20,24,.16);padding-top:16px"><div style="font-size:clamp(34px,4.4vw,60px);font-weight:800;line-height:.95;color:rgba(17,20,24,.3)">—</div><div style="margin-top:10px;font-size:13.5px;line-height:1.5;color:rgba(17,20,24,.62)">Descripción de la métrica</div><div style="margin-top:8px;font-size:9px;letter-spacing:.2em;color:#FF4D3D">TODO: MÉTRICA REAL</div></div>
+          <div style="border-top:1px solid rgba(17,20,24,.16);padding-top:16px"><div style="font-size:clamp(34px,4.4vw,60px);font-weight:800;line-height:.95;color:rgba(17,20,24,.3)">—</div><div style="margin-top:10px;font-size:13.5px;line-height:1.5;color:rgba(17,20,24,.62)">Descripción de la métrica</div><div style="margin-top:8px;font-size:9px;letter-spacing:.2em;color:#FF4D3D">TODO: MÉTRICA REAL</div></div>
+        </div>
+        <p style="margin:20px 0 0;max-width:640px;font-size:9.5px;line-height:1.9;letter-spacing:.14em;color:rgba(17,20,24,.7)">LAS MÉTRICAS SE PUBLICAN ÚNICAMENTE CON DATOS VERIFICADOS Y BAJO ACUERDO DE CONFIDENCIALIDAD CON CADA CLIENTE.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" style="background:#E6E8EC;padding:clamp(56px,10vh,120px) clamp(16px,3vw,32px)">
+    <div style="max-width:1320px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:clamp(26px,4vw,60px);align-items:start">
+      <div>
+        <div style="font-size:9.5px;letter-spacing:.24em;color:#FF4D3D">FAQ</div>
+        <h2 style="margin:16px 0 0;font-family:'Ethnocentric',sans-serif;font-size:clamp(16px,2.1vw,28px);line-height:1.22;text-transform:uppercase">Todo lo que se pregunta antes de empezar.</h2>
+        <div style="margin-top:24px;position:relative;border-radius:18px 0 18px 0;overflow:hidden;aspect-ratio:4/3;background:#111418">
+          <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=2000&q=80" alt="Equipo Suprads" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block">
+        </div>
+      </div>
+      <div style="border-top:1px solid rgba(17,20,24,.16)">
+        <details data-faq="1" style="border-bottom:1px solid rgba(17,20,24,.16)">
+          <summary style="list-style:none;cursor:pointer;display:flex;align-items:center;gap:16px;padding:18px 0;outline-offset:4px"><span style="font-size:9.5px;letter-spacing:.2em;color:rgba(17,20,24,.6)">01</span><span style="flex:1;font-family:'Ethnocentric',sans-serif;font-size:clamp(11.5px,1vw,14px);line-height:1.32;text-transform:uppercase">Cómo funciona el modelo de performance</span><span data-faqsign="1" style="font-size:18px;color:rgba(17,20,24,.6);transition:transform .2s ease,color .2s ease">+</span></summary>
+          <p style="margin:0 0 18px;max-width:640px;font-size:14.5px;line-height:1.62;color:rgba(17,20,24,.66)">TODO: respuesta definitiva pendiente del archivo base.</p>
+        </details>
+        <details data-faq="2" style="border-bottom:1px solid rgba(17,20,24,.16)">
+          <summary style="list-style:none;cursor:pointer;display:flex;align-items:center;gap:16px;padding:18px 0;outline-offset:4px"><span style="font-size:9.5px;letter-spacing:.2em;color:rgba(17,20,24,.6)">02</span><span style="flex:1;font-family:'Ethnocentric',sans-serif;font-size:clamp(11.5px,1vw,14px);line-height:1.32;text-transform:uppercase">Quién paga la pauta y las herramientas</span><span data-faqsign="2" style="font-size:18px;color:rgba(17,20,24,.6);transition:transform .2s ease,color .2s ease">+</span></summary>
+          <p style="margin:0 0 18px;max-width:640px;font-size:14.5px;line-height:1.62;color:rgba(17,20,24,.66)">TODO: respuesta definitiva pendiente del archivo base.</p>
+        </details>
+        <details data-faq="3" style="border-bottom:1px solid rgba(17,20,24,.16)">
+          <summary style="list-style:none;cursor:pointer;display:flex;align-items:center;gap:16px;padding:18px 0;outline-offset:4px"><span style="font-size:9.5px;letter-spacing:.2em;color:rgba(17,20,24,.6)">03</span><span style="flex:1;font-family:'Ethnocentric',sans-serif;font-size:clamp(11.5px,1vw,14px);line-height:1.32;text-transform:uppercase">Trabajan fuera de Argentina</span><span data-faqsign="3" style="font-size:18px;color:rgba(17,20,24,.6);transition:transform .2s ease,color .2s ease">+</span></summary>
+          <p style="margin:0 0 18px;max-width:640px;font-size:14.5px;line-height:1.62;color:rgba(17,20,24,.66)">TODO: respuesta definitiva pendiente del archivo base.</p>
+        </details>
+        <details data-faq="4" style="border-bottom:1px solid rgba(17,20,24,.16)">
+          <summary style="list-style:none;cursor:pointer;display:flex;align-items:center;gap:16px;padding:18px 0;outline-offset:4px"><span style="font-size:9.5px;letter-spacing:.2em;color:rgba(17,20,24,.6)">04</span><span style="flex:1;font-family:'Ethnocentric',sans-serif;font-size:clamp(11.5px,1vw,14px);line-height:1.32;text-transform:uppercase">Qué pasa si no hay resultados</span><span data-faqsign="4" style="font-size:18px;color:rgba(17,20,24,.6);transition:transform .2s ease,color .2s ease">+</span></summary>
+          <p style="margin:0 0 18px;max-width:640px;font-size:14.5px;line-height:1.62;color:rgba(17,20,24,.66)">TODO: respuesta definitiva pendiente del archivo base.</p>
+        </details>
+        <details data-faq="5" style="border-bottom:1px solid rgba(17,20,24,.16)">
+          <summary style="list-style:none;cursor:pointer;display:flex;align-items:center;gap:16px;padding:18px 0;outline-offset:4px"><span style="font-size:9.5px;letter-spacing:.2em;color:rgba(17,20,24,.6)">05</span><span style="flex:1;font-family:'Ethnocentric',sans-serif;font-size:clamp(11.5px,1vw,14px);line-height:1.32;text-transform:uppercase">Cuánto tarda la implementación</span><span data-faqsign="5" style="font-size:18px;color:rgba(17,20,24,.6);transition:transform .2s ease,color .2s ease">+</span></summary>
+          <p style="margin:0 0 18px;max-width:640px;font-size:14.5px;line-height:1.62;color:rgba(17,20,24,.66)">TODO: respuesta definitiva pendiente del archivo base.</p>
+        </details>
+        <details data-faq="6" style="border-bottom:1px solid rgba(17,20,24,.16)">
+          <summary style="list-style:none;cursor:pointer;display:flex;align-items:center;gap:16px;padding:18px 0;outline-offset:4px"><span style="font-size:9.5px;letter-spacing:.2em;color:rgba(17,20,24,.6)">06</span><span style="flex:1;font-family:'Ethnocentric',sans-serif;font-size:clamp(11.5px,1vw,14px);line-height:1.32;text-transform:uppercase">Qué necesita el cliente para arrancar</span><span data-faqsign="6" style="font-size:18px;color:rgba(17,20,24,.6);transition:transform .2s ease,color .2s ease">+</span></summary>
+          <p style="margin:0 0 18px;max-width:640px;font-size:14.5px;line-height:1.62;color:rgba(17,20,24,.66)">TODO: respuesta definitiva pendiente del archivo base.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto" style="position:relative;background:#111418;color:#E6E8EC;overflow:hidden;padding:clamp(56px,10vh,120px) clamp(16px,3vw,32px)">
+    <div style="position:relative;max-width:1320px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:clamp(26px,4vw,64px);align-items:start">
+      <div>
+        <div style="font-size:9.5px;letter-spacing:.24em;color:#FF8A3D">CONTACTO</div>
+        <h2 style="margin:16px 0 0;max-width:520px;font-family:'Ethnocentric',sans-serif;font-size:clamp(18px,2.6vw,38px);line-height:1.18;text-transform:uppercase">Empecemos por los números.</h2>
+        <p style="margin:18px 0 0;max-width:460px;font-size:15.5px;line-height:1.6;color:rgba(230,232,236,.68)">Antes de invertir en pauta, conviene saber qué parte del circuito está frenando el negocio.</p>
+        <a href="#TODO-CALENDLY-URL" data-placeholder="CALENDLY_URL" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:12px;margin-top:26px;padding:18px 28px;border-radius:15px 0 15px 0;background:#FF4D3D;color:#F7F8FA;font-size:16px;font-weight:700" style-hover="background:#F7F8FA;color:#111418">Agendar llamada
+          <svg width="16" height="16" viewBox="0 0 19 19" aria-hidden="true"><path d="M16.625 2.375V13.0428H15.4441V4.3826L3.20166 16.625L2.375 15.759L14.578 3.55594H5.91782V2.375H16.625Z" fill="currentColor"></path></svg>
+        </a>
+        <div style="margin-top:14px"><a href="#TODO-WHATSAPP-URL" data-placeholder="WHATSAPP_URL" target="_blank" rel="noopener" style="font-size:9.5px;letter-spacing:.2em;color:rgba(230,232,236,.7)">O ESCRIBINOS POR WHATSAPP</a></div>
+      </div>
+
+      <form data-form="1" style="display:flex;flex-direction:column;gap:14px;padding:clamp(22px,2.6vw,34px);border-radius:18px 0 18px 0;background:rgba(230,232,236,.05);border:1px solid rgba(230,232,236,.14)">
+        <label style="display:flex;flex-direction:column;gap:7px;font-size:9.5px;letter-spacing:.2em;color:rgba(230,232,236,.62)">NOMBRE
+          <input type="text" name="nombre" required placeholder="Tu nombre" style="padding:14px;border-radius:12px 0 12px 0;border:1px solid rgba(230,232,236,.2);background:rgba(17,20,24,.6);color:#E6E8EC;font-size:15px;letter-spacing:0">
+        </label>
+        <label style="display:flex;flex-direction:column;gap:7px;font-size:9.5px;letter-spacing:.2em;color:rgba(230,232,236,.62)">CORREO ELECTRÓNICO
+          <input type="email" name="email" required placeholder="nombre@empresa.com" style="padding:14px;border-radius:12px 0 12px 0;border:1px solid rgba(230,232,236,.2);background:rgba(17,20,24,.6);color:#E6E8EC;font-size:15px;letter-spacing:0">
+        </label>
+        <label style="display:flex;flex-direction:column;gap:7px;font-size:9.5px;letter-spacing:.2em;color:rgba(230,232,236,.62)">MÓDULO DE INTERÉS
+          <select name="modulo" style="padding:14px;border-radius:12px 0 12px 0;border:1px solid rgba(230,232,236,.2);background:rgba(17,20,24,.6);color:#E6E8EC;font-size:15px;letter-spacing:0">
+            <option>Sistemas de Captación por Performance</option>
+            <option>Automatización &amp; Chatbots</option>
+            <option>Performance Ads</option>
+            <option>Web &amp; E-commerce</option>
+            <option>Todavía no lo sé</option>
+          </select>
+        </label>
+        <label style="display:flex;flex-direction:column;gap:7px;font-size:9.5px;letter-spacing:.2em;color:rgba(230,232,236,.62)">MENSAJE
+          <textarea name="mensaje" rows="4" placeholder="Contanos brevemente qué estás buscando" style="padding:14px;border-radius:12px 0 12px 0;border:1px solid rgba(230,232,236,.2);background:rgba(17,20,24,.6);color:#E6E8EC;font-size:15px;letter-spacing:0;resize:vertical"></textarea>
+        </label>
+        <button type="submit" style="margin-top:4px;padding:16px;border:0;border-radius:15px 0 15px 0;background:#E6E8EC;color:#111418;font-size:15px;font-weight:700;cursor:pointer" style-hover="background:#FF8A3D">Enviar mensaje</button>
+        <div data-formnote="1" style="font-size:9.5px;letter-spacing:.16em;color:rgba(230,232,236,.55)">TODO: CONECTAR ENVÍO DEL FORMULARIO · CTA PRIMARIO SIGUE SIENDO CALENDLY</div>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="position:relative;background:#0D1014;color:#E6E8EC;overflow:hidden;padding:clamp(34px,5vh,58px) clamp(16px,3vw,32px) clamp(18px,2vh,26px)">
+    <img src="assets/trama-oscura.png" alt="" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.12;pointer-events:none">
+    <div style="position:relative;max-width:1320px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(190px,100%),1fr));gap:clamp(18px,2.6vw,38px)">
+      <div style="max-width:320px">
+        <img src="assets/logo-tagline.png" alt="Suprads — Soluciones digitales integrales" loading="lazy" style="width:min(200px,100%);height:auto;display:block">
+        <p style="margin:14px 0 0;font-size:13.5px;line-height:1.55;color:rgba(230,232,236,.62)">Sistemas de crecimiento productizados para Argentina y LATAM.</p>
+      </div>
+      <div>
+        <div style="font-size:9.5px;letter-spacing:.24em;color:rgba(230,232,236,.55);margin-bottom:11px">SECCIONES</div>
+        <div style="display:flex;flex-direction:column;gap:7px;font-size:13.5px">
+          <a href="#enfoque">Enfoque</a><a href="#servicios">Servicios</a><a href="#especializados">Especialidades</a><a href="#faq">FAQ</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:9.5px;letter-spacing:.24em;color:rgba(230,232,236,.55);margin-bottom:11px">MÓDULOS</div>
+        <div style="display:flex;flex-direction:column;gap:7px;font-size:13.5px">
+          <a href="#servicios">Captación por Performance</a><a href="#servicios">Automatización &amp; Chatbots</a><a href="#servicios">Performance Ads</a><a href="#servicios">Web &amp; E-commerce</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:9.5px;letter-spacing:.24em;color:rgba(230,232,236,.55);margin-bottom:11px">CONTACTO</div>
+        <a href="#TODO-CALENDLY-URL" data-placeholder="CALENDLY_URL" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:15px 0 15px 0;background:#FF4D3D;color:#F7F8FA;font-size:14px;font-weight:700" style-hover="background:#E6E8EC;color:#111418">Agendar llamada</a>
+        <div style="margin-top:12px;font-size:13.5px"><a href="#TODO-WHATSAPP-URL" data-placeholder="WHATSAPP_URL" target="_blank" rel="noopener">WhatsApp</a></div>
+      </div>
+    </div>
+    <div style="position:relative;max-width:1320px;margin:clamp(22px,3vh,34px) auto 0;padding-top:14px;border-top:1px solid rgba(230,232,236,.14);display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:9.5px;letter-spacing:.16em;color:rgba(230,232,236,.5)">
+      <span>© 2026 SUPRADS S.R.L.</span><span>ARGENTINA &amp; LATAM</span>
+    </div>
+  </footer>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440}}">
+class Component extends DCLogic {
+  q(s){ return this.root && this.root.querySelector(s); }
+  qa(s){ return this.root ? Array.from(this.root.querySelectorAll(s)) : []; }
+
+  componentDidMount(){
+    this.root = document.querySelector("x-dc") || document;
+    this.cleanups = [];
+    this.reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    this.initNav();
+    this.initCarousel();
+    this.initReveals();
+    this.initHovers();
+    this.initFaq();
+    this.initForm();
+  }
+  componentWillUnmount(){ (this.cleanups||[]).forEach(f => f()); }
+
+  initNav(){
+    const nav = this.q("[data-nav]");
+    const links = this.qa("[data-navgroup]");
+    const onScroll = () => {
+      const solid = window.scrollY > 40;
+      if (!nav) return;
+      nav.style.background = solid ? "rgba(17,20,24,.92)" : "rgba(247,248,250,0)";
+      nav.style.backdropFilter = solid ? "blur(14px)" : "blur(0px)";
+      nav.style.borderBottomColor = solid ? "rgba(230,232,236,.14)" : "rgba(17,20,24,0)";
+      links.forEach(l => { l.style.color = "#E6E8EC"; });
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    this.cleanups.push(() => window.removeEventListener("scroll", onScroll));
+
+    const drop = this.q("[data-drop]"), menu = this.q("[data-dropmenu]");
+    if (drop && menu) {
+      const open = v => { menu.style.opacity = v ? 1 : 0; menu.style.visibility = v ? "visible" : "hidden"; menu.style.transform = v ? "translateY(0)" : "translateY(-6px)"; };
+      drop.addEventListener("mouseenter", () => open(true));
+      drop.addEventListener("mouseleave", () => open(false));
+      const trig = this.q("[data-droptrigger]");
+      if (trig) trig.addEventListener("click", () => open(menu.style.visibility !== "visible"));
+    }
+  }
+
+  initCarousel(){
+    const cards = this.qa("[data-cslide]");
+    if (!cards.length) return;
+    const n = cards.length;
+    const label = this.q("[data-badgestage]");
+    const names = ["Captación", "Conversión", "Filtrado y cierre previo", "Optimización continua"];
+    this.ci = 0;
+
+    let stepPx = 0, drag = 0;
+    // una sola curva para todo el carrusel: entrada lenta, salida larga
+    const anim = "transform 1.15s cubic-bezier(.4,.02,.2,1),opacity 1.15s cubic-bezier(.4,.02,.2,1),filter 1.15s ease";
+    cards.forEach(c => { c.style.transition = anim; c.style.willChange = "transform,opacity"; c.style.backfaceVisibility = "hidden"; });
+
+    // apila las tarjetas: la activa al frente, las vecinas detrás y desplazadas
+    const layout = () => {
+      const stage = this.q("[data-stage]");
+      const cw = cards[0].offsetWidth || 220;
+      const sw = (stage && stage.offsetWidth) || cw * 2;
+      // el desplazamiento nunca saca la tarjeta vecina del escenario
+      const step = Math.max(60, Math.min(cw * 0.62, (sw - cw * 0.86) / 2));
+      stepPx = step;
+      // el arrastre corre la pila una fracción de paso, sin pasar de una tarjeta
+      const shift = Math.max(-1, Math.min(1, drag / step));
+      cards.forEach((c, k) => {
+        // wrap simétrico: con 4 tarjetas queda 1 izquierda / centro / 1 derecha
+        let d = ((k - this.ci + n + Math.floor(n / 2)) % n) - Math.floor(n / 2);
+        // la tarjeta que salta de un extremo al otro se reposiciona sin animar:
+        // ese teletransporte es el "salto" que se veía entre video y video
+        const prev = c.__d;
+        const jump = prev !== undefined && Math.abs(d - prev) > 1;
+        c.__d = d;
+        if (jump) {
+          c.style.transition = "none";
+          requestAnimationFrame(() => requestAnimationFrame(() => { c.style.transition = anim; }));
+        }
+        const p = d + shift;
+        const abs = Math.abs(p);
+        const x = -50 + (p * step) / cw * 100;
+        const scale = abs >= 1 ? 0.9 : 1 - abs * 0.1;
+        c.style.transform = "translate(" + x + "%,-50%) scale(" + scale + ") rotateY(" + (p * -5) + "deg)";
+        c.style.zIndex = String(30 - Math.round(abs) * 10);
+        // sólo tres tarjetas a la vista: la cuarta se oculta del todo en vez de quedar borrosa
+        c.style.opacity = abs >= 1.35 ? 0 : abs <= 1 ? 1 - abs * 0.42 : 0.58 * (1 - (abs - 1) / 0.35);
+        // sin visibility:hidden — los iframes de las tarjetas ocultas deben seguir reproduciendo
+        c.style.pointerEvents = "none";
+        // sin blur: el desenfoque sobre video se veía como una mancha
+        c.style.filter = abs < 0.5 ? "none" : "brightness(.6)";
+      });
+      if (label) label.textContent = names[this.ci] || "";
+    };
+    layout();
+
+    let timer = null;
+    const play = () => { if (!timer) timer = setInterval(() => { this.ci = (this.ci + 1) % n; layout(); }, 3400); };
+    const pause = () => { if (timer) { clearInterval(timer); timer = null; } };
+    play();
+    window.addEventListener("resize", layout);
+
+    // arrastre con mouse o dedo; el auto-play se detiene mientras se interactúa
+    const zone = this.q("[data-carousel]");
+    if (zone) {
+      zone.style.cursor = "grab";
+      zone.style.touchAction = "pan-y";
+      let id = null, x0 = 0, hover = false;
+      // durante el arrastre las tarjetas siguen al dedo sin interpolar
+      const setAnim = on => cards.forEach(c => { c.style.transition = on ? anim : "none"; });
+      const end = () => {
+        if (id === null) return;
+        id = null;
+        zone.style.cursor = "grab";
+        setAnim(true);
+        // más de un tercio de paso cuenta como cambio de tarjeta
+        if (Math.abs(drag) > stepPx / 3) this.ci = (this.ci + (drag < 0 ? 1 : n - 1)) % n;
+        drag = 0;
+        layout();
+        if (!hover) play();
+      };
+      zone.addEventListener("pointerdown", e => {
+        id = e.pointerId; x0 = e.clientX; drag = 0;
+        pause(); setAnim(false);
+        zone.style.cursor = "grabbing";
+        if (zone.setPointerCapture) { try { zone.setPointerCapture(id); } catch (err) {} }
+      });
+      zone.addEventListener("pointermove", e => {
+        if (id === null || e.pointerId !== id) return;
+        drag = e.clientX - x0;
+        layout();
+      });
+      zone.addEventListener("pointerup", end);
+      zone.addEventListener("pointercancel", end);
+      zone.addEventListener("mouseenter", () => { hover = true; pause(); });
+      zone.addEventListener("mouseleave", () => { hover = false; if (id === null) play(); });
+      // teclado: alternativa accesible al arrastre
+      zone.setAttribute("tabindex", "0");
+      zone.setAttribute("role", "group");
+      zone.setAttribute("aria-label", "Etapas del sistema — arrastrá para cambiar");
+      zone.addEventListener("keydown", e => {
+        if (e.key !== "ArrowLeft" && e.key !== "ArrowRight") return;
+        e.preventDefault();
+        this.ci = (this.ci + (e.key === "ArrowRight" ? 1 : n - 1)) % n;
+        layout();
+      });
+      zone.addEventListener("focus", pause);
+      zone.addEventListener("blur", () => { if (!hover && id === null) play(); });
+    }
+
+    this.cleanups.push(() => { pause(); window.removeEventListener("resize", layout); });
+  }
+
+  initReveals(){
+    const els = this.qa("[data-reveal]");
+    if (this.reduced) return;
+    els.forEach(el => { el.style.opacity = 0; el.style.transform = "translateY(18px)"; el.style.transition = "opacity .7s ease, transform .7s cubic-bezier(.22,1,.36,1)"; });
+    const io = new IntersectionObserver(es => es.forEach(e => {
+      if (!e.isIntersecting) return;
+      e.target.style.opacity = 1; e.target.style.transform = "translateY(0)";
+      io.unobserve(e.target);
+    }), { threshold: .16, rootMargin: "0px 0px -8% 0px" });
+    els.forEach(el => io.observe(el));
+    this.cleanups.push(() => io.disconnect());
+  }
+
+  initHovers(){
+    this.qa("[data-pillar]").forEach(p => {
+      p.addEventListener("mouseenter", () => { p.style.transform = "translateY(-3px)"; p.style.boxShadow = "0 22px 44px rgba(17,20,24,.14)"; });
+      p.addEventListener("mouseleave", () => { p.style.transform = "translateY(0)"; p.style.boxShadow = "0 14px 30px rgba(17,20,24,.06)"; });
+    });
+    this.qa("[data-spec]").forEach(s => {
+      s.addEventListener("mouseenter", () => { s.style.background = "#111418"; s.style.color = "#E6E8EC"; });
+      s.addEventListener("mouseleave", () => { s.style.background = "#F7F8FA"; s.style.color = "#111418"; });
+    });
+  }
+
+  initFaq(){
+    this.qa("[data-faq]").forEach(d => {
+      const sign = d.querySelector("[data-faqsign]");
+      d.addEventListener("toggle", () => {
+        if (d.open) this.qa("[data-faq]").forEach(o => { if (o !== d) o.open = false; });
+        if (!sign) return;
+        sign.textContent = d.open ? "−" : "+";
+        sign.style.color = d.open ? "#FF4D3D" : "rgba(17,20,24,.6)";
+      });
+    });
+  }
+
+  initForm(){
+    const form = this.q("[data-form]"), note = this.q("[data-formnote]");
+    if (!form) return;
+    form.addEventListener("submit", e => {
+      e.preventDefault();
+      if (note) { note.textContent = "TODO: CONECTAR ENVÍO · EL MENSAJE NO SE ENVÍA TODAVÍA"; note.style.color = "#FF8A3D"; }
+    });
+  }
+}
+</script>
+</body>
+</html>

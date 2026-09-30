@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="assets/iso-dark.png">
+<link rel="apple-touch-icon" href="assets/iso-dark.png">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Suprads — Portal de clientes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:'ManropeLocal';src:url('assets/fonts/Manrope-Variable.ttf') format('truetype');font-weight:200 800;font-display:swap}
+body{margin:0;background:#060B18}
+a{color:#7FA6FF;text-decoration:none}
+a:hover{color:#AEC6FF}
+input,button{font-family:inherit}
+input::placeholder{color:#5F6F8F}
+@keyframes supspin{to{transform:rotate(360deg)}}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</helmet>
+
+<div style="min-height:100vh;font-family:'Manrope','ManropeLocal',system-ui,sans-serif;color:#E9EEFB;-webkit-font-smoothing:antialiased;background:radial-gradient(90% 70% at 80% -10%,#18306E 0%,#0C1631 40%,#060B18 78%);position:relative;overflow:hidden">
+  <div aria-hidden="true" style="position:absolute;inset:0;background-image:linear-gradient(rgba(140,170,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(140,170,255,.05) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(70% 60% at 50% 20%,#000,transparent 80%);-webkit-mask-image:radial-gradient(70% 60% at 50% 20%,#000,transparent 80%);pointer-events:none"></div>
+
+  <!-- LOGIN -->
+  <sc-if value="{{ isAuthView }}" hint-placeholder-val="{{ true }}">
+    <div style="position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;padding:32px 16px">
+      <a href="Suprads Landing v6.dc.html"><img src="assets/logo-wordmark-white.png" alt="Suprads" style="height:24px;width:auto;display:block"></a>
+
+      <div style="width:100%;max-width:420px;padding:clamp(24px,4vw,36px);border-radius:22px;border:1px solid rgba(140,170,255,.18);background:linear-gradient(180deg,rgba(21,34,72,.9),rgba(9,16,34,.94));box-shadow:0 34px 90px rgba(0,0,0,.55);box-sizing:border-box">
+
+        <sc-if value="{{ isLogin }}" hint-placeholder-val="{{ true }}">
+          <div style="font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:#7FA6FF">Portal de clientes</div>
+          <h1 style="margin:12px 0 0;font-family:'Sora',sans-serif;font-weight:800;letter-spacing:-.025em;font-size:clamp(24px,3vw,30px);line-height:1.15">Ingresá a tu cuenta</h1>
+          <p style="margin:10px 0 0;font-size:14.5px;line-height:1.6;color:#AFBDD8">Accedé a los materiales y reportes de tu cuenta.</p>
+
+          <form onSubmit="{{ onLogin }}" style="display:grid;gap:16px;margin-top:26px">
+            <label style="display:grid;gap:8px">
+              <span style="font-size:13px;font-weight:600;color:#D6E0F5">Email</span>
+              <input type="email" autocomplete="username" placeholder="nombre@empresa.com" value="{{ email }}" onChange="{{ onEmail }}" style="height:48px;padding:0 14px;border-radius:12px;border:1px solid rgba(140,170,255,.2);background:rgba(4,8,18,.6);color:#E9EEFB;font-size:15px;outline:none" style-focus="border-color:#2F6BFF;box-shadow:0 0 0 3px rgba(47,107,255,.25)">
+            </label>
+            <label style="display:grid;gap:8px">
+              <span style="display:flex;justify-content:space-between;align-items:center;font-size:13px;font-weight:600;color:#D6E0F5">Contraseña
+                <button type="button" onClick="{{ goForgot }}" style="padding:0;border:0;background:none;color:#7FA6FF;font-size:12.5px;font-weight:600;cursor:pointer">¿La olvidaste?</button>
+              </span>
+              <div style="position:relative">
+                <input type="{{ pwType }}" autocomplete="current-password" placeholder="••••••••" value="{{ password }}" onChange="{{ onPassword }}" style="width:100%;box-sizing:border-box;height:48px;padding:0 70px 0 14px;border-radius:12px;border:1px solid rgba(140,170,255,.2);background:rgba(4,8,18,.6);color:#E9EEFB;font-size:15px;outline:none" style-focus="border-color:#2F6BFF;box-shadow:0 0 0 3px rgba(47,107,255,.25)">
+                <button type="button" onClick="{{ togglePw }}" style="position:absolute;right:6px;top:6px;height:36px;padding:0 10px;border:0;border-radius:8px;background:rgba(255,255,255,.05);color:#AFBDD8;font-size:12.5px;font-weight:600;cursor:pointer">{{ pwToggleLabel }}</button>
+              </div>
+            </label>
+
+            <sc-if value="{{ hasError }}" hint-placeholder-val="{{ false }}">
+              <div role="alert" style="padding:12px 14px;border-radius:10px;background:rgba(255,90,90,.1);border:1px solid rgba(255,110,110,.35);color:#FFB4B4;font-size:13.5px;line-height:1.5">{{ error }}</div>
+            </sc-if>
+
+            <button type="submit" disabled="{{ loading }}" style="height:50px;display:flex;align-items:center;justify-content:center;gap:10px;border:0;border-radius:12px;background:#2F6BFF;color:#fff;font-size:15px;font-weight:700;cursor:pointer;box-shadow:0 16px 40px rgba(47,107,255,.38)" style-hover="background:#1B57F0">
+              <sc-if value="{{ loading }}" hint-placeholder-val="{{ false }}">
+                <span style="width:16px;height:16px;border-radius:50%;border:2px solid rgba(255,255,255,.35);border-top-color:#fff;animation:supspin .8s linear infinite"></span>
+              </sc-if>
+              {{ submitLabel }}
+            </button>
+          </form>
+
+        </sc-if>
+
+        <sc-if value="{{ isForgot }}" hint-placeholder-val="{{ false }}">
+          <div style="font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:#7FA6FF">Recuperar acceso</div>
+          <h1 style="margin:12px 0 0;font-family:'Sora',sans-serif;font-weight:800;letter-spacing:-.025em;font-size:clamp(22px,3vw,28px);line-height:1.15">Restablecer contraseña</h1>
+          <sc-if value="{{ resetNotSent }}" hint-placeholder-val="{{ true }}">
+            <p style="margin:10px 0 0;font-size:14.5px;line-height:1.6;color:#AFBDD8">Te enviamos un link a tu email para crear una contraseña nueva.</p>
+            <form onSubmit="{{ onReset }}" style="display:grid;gap:16px;margin-top:22px">
+              <label style="display:grid;gap:8px">
+                <span style="font-size:13px;font-weight:600;color:#D6E0F5">Email</span>
+                <input type="email" placeholder="nombre@empresa.com" value="{{ email }}" onChange="{{ onEmail }}" style="height:48px;padding:0 14px;border-radius:12px;border:1px solid rgba(140,170,255,.2);background:rgba(4,8,18,.6);color:#E9EEFB;font-size:15px;outline:none" style-focus="border-color:#2F6BFF;box-shadow:0 0 0 3px rgba(47,107,255,.25)">
+              </label>
+              <button type="submit" style="height:50px;border:0;border-radius:12px;background:#2F6BFF;color:#fff;font-size:15px;font-weight:700;cursor:pointer">Enviar link</button>
+            </form>
+          </sc-if>
+          <sc-if value="{{ resetSent }}" hint-placeholder-val="{{ false }}">
+            <div style="margin-top:18px;padding:14px;border-radius:12px;background:rgba(74,222,128,.08);border:1px solid rgba(74,222,128,.3);color:#BFF3D2;font-size:14px;line-height:1.55">Si <strong>{{ email }}</strong> tiene cuenta, en unos minutos le llega el link. Revisá también spam.</div>
+          </sc-if>
+          <button type="button" onClick="{{ goLogin }}" style="margin-top:18px;padding:0;border:0;background:none;color:#7FA6FF;font-size:14px;font-weight:600;cursor:pointer">← Volver a ingresar</button>
+        </sc-if>
+      </div>
+
+      <div style="display:grid;gap:10px;justify-items:center;font-size:12.5px;color:#6C7C9C">
+        <span>¿No tenés cuenta? Pedísela a tu contacto en Suprads.</span>
+        <a href="Suprads Landing v6.dc.html" style="font-weight:600">← Volver al sitio</a>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- PANEL -->
+  <sc-if value="{{ isPanel }}" hint-placeholder-val="{{ false }}">
+    <div style="position:relative;min-height:100vh;display:flex;flex-direction:column">
+      <nav style="position:sticky;top:0;z-index:10;background:rgba(6,11,24,.82);backdrop-filter:blur(14px);border-bottom:1px solid rgba(140,170,255,.10)">
+        <div style="max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px clamp(16px,3vw,28px)">
+          <a href="Suprads Landing v6.dc.html"><img src="assets/logo-wordmark-white.png" alt="Suprads" style="height:20px;width:auto;display:block"></a>
+          <div style="display:flex;align-items:center;gap:12px">
+            <a href="Suprads Landing v6.dc.html" style="font-size:13px;font-weight:600;color:#AFBDD8">← Volver al sitio</a>
+            <div style="display:flex;align-items:center;gap:10px">
+              <div style="width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#6A5BFF,#2F6BFF);font-family:'Sora',sans-serif;font-weight:700;font-size:13px">{{ user.initials }}</div>
+              <div style="display:grid;line-height:1.25">
+                <span style="font-size:13.5px;font-weight:700">{{ user.name }}</span>
+                <span style="font-size:12px;color:#93A2C0">{{ user.company }}</span>
+              </div>
+            </div>
+            <button type="button" onClick="{{ logout }}" style="height:36px;padding:0 14px;border-radius:10px;border:1px solid rgba(140,170,255,.2);background:rgba(255,255,255,.03);color:#D6E0F5;font-size:13px;font-weight:600;cursor:pointer" style-hover="border-color:rgba(140,170,255,.4)">Salir</button>
+          </div>
+        </div>
+      </nav>
+
+      <main style="flex:1;width:100%;max-width:1100px;margin:0 auto;padding:clamp(28px,5vh,56px) clamp(16px,3vw,28px);box-sizing:border-box">
+        <div style="font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:#7FA6FF">Tu espacio</div>
+        <h1 style="margin:12px 0 0;font-family:'Sora',sans-serif;font-weight:800;letter-spacing:-.025em;font-size:clamp(24px,3.2vw,38px);line-height:1.12">Hola, {{ user.firstName }}</h1>
+        <p style="margin:12px 0 0;max-width:620px;font-size:clamp(15px,1.2vw,17px);line-height:1.65;color:#AFBDD8">{{ user.message }}</p>
+
+        <sc-if value="{{ noPhoto }}" hint-placeholder-val="{{ false }}">
+          <div style="margin-top:clamp(24px,4vh,36px);padding:clamp(28px,5vw,56px) 24px;border-radius:20px;border:1px dashed rgba(140,170,255,.25);background:rgba(255,255,255,.02);text-align:center">
+            <div style="font-family:'Sora',sans-serif;font-weight:700;font-size:17px">{{ photoStatus }}</div>
+            <div style="margin-top:8px;font-size:14px;color:#93A2C0">Cuando subamos material nuevo lo vas a ver acá.</div>
+          </div>
+        </sc-if>
+        <sc-if value="{{ hasPhoto }}" hint-placeholder-val="{{ false }}">
+        <div style="margin-top:clamp(24px,4vh,36px);padding:clamp(12px,1.4vw,16px);border-radius:20px;border:1px solid rgba(140,170,255,.16);background:linear-gradient(180deg,rgba(21,34,72,.75),rgba(9,16,34,.85));box-shadow:0 30px 80px rgba(0,0,0,.45)">
+          <button type="button" onClick="{{ openLightbox }}" style="display:block;width:100%;padding:0;border:0;background:#04080F;border-radius:14px;overflow:hidden;cursor:zoom-in">
+            {{ photoImg }}
+          </button>
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;padding:16px 6px 4px">
+            <div>
+              <div style="font-family:'Sora',sans-serif;font-weight:700;font-size:16px">{{ user.photoTitle }}</div>
+              <div style="margin-top:4px;font-size:13px;color:#93A2C0">Subida el {{ user.photoDate }}</div>
+            </div>
+            <div style="display:flex;gap:10px">
+              <button type="button" onClick="{{ openLightbox }}" style="height:42px;padding:0 16px;border-radius:11px;border:1px solid rgba(140,170,255,.22);background:rgba(255,255,255,.03);color:#D6E0F5;font-size:14px;font-weight:600;cursor:pointer">Ver grande</button>
+              <a href="{{ user.photo }}" target="_blank" rel="noopener" download="download" style="height:42px;display:inline-flex;align-items:center;padding:0 16px;border-radius:11px;background:#2F6BFF;color:#fff;font-size:14px;font-weight:700">Descargar</a>
+            </div>
+          </div>
+        </div>
+        </sc-if>
+      </main>
+
+      <footer style="padding:20px clamp(16px,3vw,28px);border-top:1px solid rgba(140,170,255,.10);font-size:12.5px;color:#6C7C9C;text-align:center">© 2026 Suprads · Portal de clientes</footer>
+
+      <sc-if value="{{ lightbox }}" hint-placeholder-val="{{ false }}">
+        <div onClick="{{ closeLightbox }}" style="position:fixed;inset:0;z-index:50;background:rgba(3,6,14,.92);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:24px;cursor:zoom-out">
+          {{ lightboxImg }}
+          <button type="button" onClick="{{ closeLightbox }}" style="position:absolute;top:18px;right:18px;height:40px;padding:0 14px;border-radius:10px;border:1px solid rgba(140,170,255,.25);background:rgba(6,11,24,.8);color:#E9EEFB;font-size:13px;font-weight:600;cursor:pointer">Cerrar ✕</button>
+        </div>
+      </sc-if>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+// Conexión real a Supabase (Auth + Database + Storage)
+const SUPABASE_URL = 'https://sqfwoyqwbpuwopynnfvi.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_ekjVaDRXt-TKSRXZlLELbw_keeivRTB';
+const BUCKET = 'client-photos';
+
+const getClient = () => {
+  if (window.__supa) return window.__supa;
+  if (!window.supabase || !window.supabase.createClient) return null;
+  window.__supa = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY, {
+    auth: { persistSession: true, autoRefreshToken: true, storageKey: 'suprads_portal_auth' }
+  });
+  return window.__supa;
+};
+const fmtDate = (d) => {
+  if (!d) return '';
+  const [y, m, day] = String(d).slice(0, 10).split('-');
+  return day && m && y ? day + '/' + m + '/' + y : d;
+};
+
+class Component extends DCLogic {
+  state = { view: 'loading', email: '', password: '', showPw: false, error: '', loading: false, resetSent: false,
+            profile: null, photoUrl: '', photoStatus: 'Cargando tu material…', lightbox: false };
+
+  componentDidMount() {
+    this._esc = (e) => { if (e.key === 'Escape') this.setState({ lightbox: false }); };
+    window.addEventListener('keydown', this._esc);
+    this.boot(0);
+  }
+  componentWillUnmount() {
+    window.removeEventListener('keydown', this._esc);
+    if (this._sub) this._sub.unsubscribe();
+  }
+
+  boot = async (tries) => {
+    const sb = getClient();
+    if (!sb) {
+      if (tries < 50) return setTimeout(() => this.boot(tries + 1), 100);
+      return this.setState({ view: 'login', error: 'No se pudo conectar con el servidor. Recargá la página.' });
+    }
+    let data = null;
+    try {
+      const res = await Promise.race([
+        sb.auth.getSession(),
+        new Promise((r) => setTimeout(() => r({ data: null, timeout: true }), 2500))
+      ]);
+      data = res && res.data;
+    } catch (e) { data = null; }
+    if (data && data.session) this.loadPanel(data.session.user);
+    else if (this.state.view === 'loading') this.setState({ view: 'login' });
+    const { data: sub } = sb.auth.onAuthStateChange((evt, session) => {
+      if (evt === 'SIGNED_OUT' || !session) this.setState({ view: 'login', profile: null, photoUrl: '', lightbox: false });
+    });
+    this._sub = sub && sub.subscription;
+  };
+
+  loadPanel = async (user) => {
+    const sb = getClient();
+    this.setState({ view: 'panel', photoUrl: '', photoStatus: 'Cargando tu material…',
+      profile: { name: user.email.split('@')[0], email: user.email } });
+    const { data: p, error } = await sb.from('profiles').select('*').eq('id', user.id).maybeSingle();
+    if (error) console.warn('profiles:', error.message);
+    const profile = p || { name: user.email.split('@')[0], email: user.email };
+    this.setState({ profile });
+    if (!profile.photo_path) return this.setState({ photoStatus: 'Todavía no hay material cargado' });
+    const { data: signed, error: e2 } = await sb.storage.from(BUCKET).createSignedUrl(profile.photo_path, 3600);
+    if (e2 || !signed) { console.warn('storage:', e2 && e2.message); return this.setState({ photoStatus: 'No pudimos cargar la imagen' }); }
+    this.setState({ photoUrl: signed.signedUrl });
+  };
+
+  login = async (e) => {
+    e.preventDefault();
+    const email = this.state.email.trim().toLowerCase();
+    const password = this.state.password;
+    if (!email || !password) return this.setState({ error: 'Completá email y contraseña.' });
+    const sb = getClient();
+    if (!sb) return this.setState({ error: 'Sin conexión con el servidor.' });
+    this.setState({ loading: true, error: '' });
+    const { data, error } = await sb.auth.signInWithPassword({ email, password });
+    if (error) {
+      console.warn('Supabase login:', error.status, error.code, error.message);
+      const msg = /confirm/i.test(error.message) ? 'Tu email todavía no está confirmado.'
+        : /invalid/i.test(error.message) ? 'Email o contraseña incorrectos.'
+        : 'No se pudo ingresar: ' + error.message;
+      return this.setState({ loading: false, error: msg });
+    }
+    this.setState({ loading: false, password: '' });
+    this.loadPanel(data.user);
+  };
+
+  reset = async (e) => {
+    e.preventDefault();
+    const email = this.state.email.trim();
+    if (!email) return;
+    const sb = getClient();
+    if (sb) await sb.auth.resetPasswordForEmail(email, { redirectTo: window.location.href.split('#')[0] });
+    this.setState({ resetSent: true });
+  };
+
+  renderVals() {
+    const s = this.state;
+    const p = s.profile || {};
+    const name = p.name || '';
+    const user = {
+      name, company: p.company || p.email || '',
+      firstName: name.split(' ')[0],
+      initials: name.split(/\s+/).filter(Boolean).map(w => w[0]).slice(0, 2).join('').toUpperCase() || '·',
+      message: p.message || 'Acá vas a encontrar los materiales de tu cuenta.',
+      photo: s.photoUrl, photoTitle: p.photo_title || 'Tu material', photoDate: fmtDate(p.photo_date)
+    };
+    return {
+      isAuthView: s.view !== 'panel', isLogin: s.view === 'login' || s.view === 'loading', isForgot: s.view === 'forgot', isPanel: s.view === 'panel',
+      email: s.email, password: s.password,
+      pwType: s.showPw ? 'text' : 'password', pwToggleLabel: s.showPw ? 'Ocultar' : 'Mostrar',
+      hasError: !!s.error, error: s.error, loading: s.loading,
+      submitLabel: s.loading ? 'Ingresando…' : 'Ingresar',
+      resetSent: s.resetSent, resetNotSent: !s.resetSent,
+      user, lightbox: s.lightbox,
+      photoImg: s.photoUrl ? React.createElement('img', { src: s.photoUrl, alt: user.photoTitle, style: { display: 'block', width: '100%', aspectRatio: '16/9', objectFit: 'cover' } }) : null,
+      lightboxImg: s.photoUrl ? React.createElement('img', { src: s.photoUrl, alt: user.photoTitle, style: { maxWidth: '100%', maxHeight: '100%', borderRadius: 12, boxShadow: '0 30px 90px rgba(0,0,0,.6)' } }) : null,
+      hasPhoto: !!s.photoUrl, noPhoto: !s.photoUrl, photoStatus: s.photoStatus,
+      onEmail: (e) => this.setState({ email: e.target.value, error: '' }),
+      onPassword: (e) => this.setState({ password: e.target.value, error: '' }),
+      togglePw: () => this.setState({ showPw: !s.showPw }),
+      onLogin: this.login,
+      goForgot: () => this.setState({ view: 'forgot', error: '', resetSent: false }),
+      goLogin: () => this.setState({ view: 'login', resetSent: false }),
+      onReset: this.reset,
+      logout: async () => { const sb = getClient(); if (sb) await sb.auth.signOut(); this.setState({ view: 'login', profile: null, photoUrl: '', lightbox: false }); },
+      openLightbox: () => this.setState({ lightbox: true }),
+      closeLightbox: () => this.setState({ lightbox: false })
+    };
+  }
+}
+</script>
+</body>
+</html>

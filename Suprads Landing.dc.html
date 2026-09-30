@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..900&family=Instrument+Sans:wght@400..600&family=JetBrains+Mono:wght@400..500&display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:auto}
+body{margin:0;background:#111418;overflow-x:hidden}
+a{color:#FF8A3D;text-decoration:none}
+a:hover{color:#FF4D3D}
+@keyframes sup-pulse{0%{box-shadow:0 0 0 0 rgba(255,77,61,.40)}70%{box-shadow:0 0 0 8px rgba(255,77,61,0)}100%{box-shadow:0 0 0 0 rgba(255,77,61,0)}}
+@keyframes sup-mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes sup-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+@keyframes sup-float-alt{0%,100%{transform:translateY(0)}50%{transform:translateY(2.5px)}}
+@keyframes sup-drip{from{stroke-dashoffset:100}to{stroke-dashoffset:0}}
+@keyframes sup-idle{0%,100%{opacity:.4}50%{opacity:1}}
+@media (prefers-reduced-motion: reduce){*{animation:none !important;transition:none !important}}
+</style>
+</helmet>
+
+<div id="supRoot" data-ready="{{ ready }}" style="position:relative;height:240vh;font-family:'Instrument Sans',system-ui,sans-serif;color:#E6E8EC;background:#111418">
+  <div style="position:sticky;top:0;height:auto;min-height:min(100vh,1100px);overflow:visible;display:flex;flex-direction:column">
+
+    <div style="position:absolute;inset:0;background-image:linear-gradient(to right, rgba(230,232,236,.045) 1px, transparent 1px),linear-gradient(to bottom, rgba(230,232,236,.045) 1px, transparent 1px);background-size:90px 90px"></div>
+    <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none">
+      <div style="position:absolute;right:-60px;top:-40px;width:min(46vw,640px);height:min(46vw,640px);background-image:url('assets/trama-acentos.png');background-size:cover;opacity:.34;-webkit-mask-image:radial-gradient(120% 100% at 100% 0%, #000 20%, transparent 72%);mask-image:radial-gradient(120% 100% at 100% 0%, #000 20%, transparent 72%)"></div>
+    </div>
+
+    <header style="position:relative;flex:none;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;padding:20px clamp(20px,4vw,40px);border-bottom:1px solid rgba(230,232,236,.09)">
+      <div style="display:flex;align-items:center;gap:18px">
+        <img src="assets/logo-horizontal.png" alt="Suprads" style="height:30px;width:auto;display:block">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.2em;color:#6B7280">/ 01 — SISTEMA</span>
+      </div>
+      <nav style="display:flex;align-items:center;gap:clamp(14px,2vw,26px);flex-wrap:wrap;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.16em;color:#9BA3AE">
+        <a href="#servicios" style="color:#9BA3AE">SERVICIOS</a>
+        <a href="#como" style="color:#9BA3AE">CÓMO TRABAJAMOS</a>
+        <a href="#resultados" style="color:#9BA3AE">RESULTADOS</a>
+        <a href="#faq" style="color:#9BA3AE">FAQ</a>
+        <a href="#TODO-CALENDLY-URL" data-placeholder="CALENDLY_URL" style="background:#FF4D3D;color:#111418;font-family:'Instrument Sans',system-ui,sans-serif;font-size:14px;font-weight:600;letter-spacing:0;padding:11px 17px;border-radius:9px">Agendar llamada</a>
+      </nav>
+    </header>
+
+    <main style="position:relative;flex:1;min-height:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(360px,100%),1fr));gap:clamp(24px,4vw,56px);align-content:center;padding:clamp(20px,3.5vh,44px) clamp(20px,4vw,40px)">
+
+      <div style="display:flex;flex-direction:column;justify-content:center;max-width:640px">
+        <div style="display:flex;align-items:center;gap:10px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.24em;color:#FF8A3D">
+          <img src="assets/isotipo.png" alt="" style="height:15px;width:auto;display:block;opacity:.9">
+          SISTEMAS DE CRECIMIENTO · ARGENTINA &amp; LATAM
+        </div>
+        <h1 style="margin:18px 0 0;font-family:Archivo,sans-serif;font-variation-settings:'wdth' 118,'wght' 800;font-size:clamp(38px,5.4vw,78px);line-height:.95;letter-spacing:-.035em;text-wrap:pretty">Sistemas que traen clientes.
+          <span style="display:block;margin-left:clamp(16px,6%,96px);margin-top:clamp(10px,1.6vh,20px);color:#FF4D3D;font-variation-settings:'wdth' 108,'wght' 580;font-size:clamp(21px,2.7vw,40px);line-height:1.08;letter-spacing:-.02em">No reportes que expliquen por qué no llegaron.</span>
+        </h1>
+        <p style="margin:clamp(16px,2.4vh,26px) 0 0 clamp(16px,6%,96px);max-width:520px;font-size:clamp(14.5px,1.1vw,16px);line-height:1.62;color:#9BA3AE">Construimos y operamos el circuito completo: captación, conversión, automatización y cierre previo. Y en captación, nuestro modelo es directo: cobramos cuando ganás.</p>
+        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:clamp(16px,2.4vh,26px) 0 0 clamp(16px,6%,96px)">
+          <a href="#TODO-CALENDLY-URL" data-placeholder="CALENDLY_URL" style="background:#FF4D3D;color:#111418;font-size:15px;font-weight:600;padding:15px 24px;border-radius:10px;box-shadow:0 10px 26px rgba(0,0,0,.4)">Agendar llamada de diagnóstico</a>
+          <a href="#TODO-WHATSAPP-URL" data-placeholder="WHATSAPP_URL" style="border:1px solid rgba(230,232,236,.22);color:#E6E8EC;font-size:15px;font-weight:500;padding:14px 22px;border-radius:10px">Escribinos por WhatsApp</a>
+        </div>
+        <div style="margin:14px 0 0 clamp(16px,6%,96px);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.18em;color:#6B7280">30 MINUTOS · SIN COSTO · SIN COMPROMISO</div>
+      </div>
+
+      <div style="position:relative;display:flex;flex-direction:column;justify-content:center;min-width:0">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding-left:44px;margin-bottom:14px;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.2em;color:#6B7280">
+          <span>SISTEMA DE CAPTACIÓN</span>
+          <span style="display:flex;align-items:center;gap:8px;border:1px solid rgba(230,232,236,.10);border-radius:8px;padding:6px 10px">
+            <span data-sysdot="1" style="width:6px;height:6px;border-radius:50%;background:#3A4048"></span><span data-sysmsg="1">EN STANDBY</span>
+          </span>
+        </div>
+
+        <div data-circuit="auto" style="position:relative;padding-left:44px;display:flex;flex-direction:column;gap:clamp(22px,3.4vh,38px);align-items:flex-start">
+          <svg data-svg="1" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible" fill="none">
+            <defs>
+              <linearGradient id="supFlow" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#FF4D3D"></stop>
+                <stop offset="100%" stop-color="#FF8A3D"></stop>
+              </linearGradient>
+            </defs>
+            <g stroke="rgba(230,232,236,.16)" stroke-width="1" fill="none">
+              <polyline data-base="1" points=""></polyline>
+              <polyline data-base="2" points=""></polyline>
+              <polyline data-base="3" points=""></polyline>
+              <polyline data-base="4" points="" stroke-dasharray="4 5"></polyline>
+            </g>
+            <g stroke="#FF8A3D" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <polyline data-sig="1" pathLength="100" stroke-dasharray="16 84" stroke-dashoffset="16" opacity="0" points=""></polyline>
+              <polyline data-sig="2" pathLength="100" stroke-dasharray="16 84" stroke-dashoffset="16" opacity="0" points=""></polyline>
+              <polyline data-sig="3" pathLength="100" stroke-dasharray="16 84" stroke-dashoffset="16" opacity="0" points=""></polyline>
+              <polyline data-sig="4" pathLength="100" stroke-dasharray="12 88" stroke-dashoffset="12" opacity="0" points=""></polyline>
+            </g>
+            <g stroke="#FF8A3D" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <polyline data-pulse="1" pathLength="100" stroke-dasharray="7 93" opacity="0" style="animation:sup-drip 5.5s linear infinite" points=""></polyline>
+              <polyline data-pulse="2" pathLength="100" stroke-dasharray="7 93" opacity="0" style="animation:sup-drip 5.5s linear infinite;animation-delay:1.2s" points=""></polyline>
+              <polyline data-pulse="3" pathLength="100" stroke-dasharray="7 93" opacity="0" style="animation:sup-drip 5.5s linear infinite;animation-delay:2.4s" points=""></polyline>
+              <polyline data-pulse="4" pathLength="100" stroke-dasharray="5 95" opacity="0" style="animation:sup-drip 8s linear infinite;animation-delay:3.6s" points=""></polyline>
+            </g>
+            <g fill="#3A4048">
+              <polygon data-arrow="1" points=""></polygon>
+              <polygon data-arrow="2" points=""></polygon>
+              <polygon data-arrow="3" points=""></polygon>
+              <polygon data-arrow="4" points=""></polygon>
+              <circle data-jnode="1" r="2.5"></circle>
+              <circle data-jnode="2" r="2.5"></circle>
+              <circle data-jnode="3" r="2.5"></circle>
+              <circle data-jnode="4" r="2.5"></circle>
+              <circle data-jtap="a" r="2"></circle>
+              <circle data-jtap="b" r="2"></circle>
+            </g>
+            <text data-fblabel="1" x="6" y="230" opacity="0" fill="#6B7280" font-family="JetBrains Mono, monospace" font-size="8.5" letter-spacing="2">RETROALIMENTACIÓN</text>
+          </svg>
+
+          <div data-node="1" style="position:relative;width:min(100%,420px);min-width:0;align-self:flex-start;margin-left:0;animation:sup-float 9.5s ease-in-out infinite">
+            <div data-mod="1" style="box-sizing:border-box;border:1px solid rgba(230,232,236,.10);background:#171B21;border-radius:15px;padding:13px 16px;box-shadow:0 14px 30px rgba(0,0,0,.46), 0 1px 0 rgba(230,232,236,.05) inset;transition:opacity .3s ease, transform .3s ease, border-color .5s ease, background-color .5s ease">
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.2em;color:#FF8A3D">
+                <span>01</span>
+                <span style="display:flex;align-items:center;gap:7px"><span data-state="1" style="color:#6B7280">STANDBY</span><span data-dot="1" style="width:6px;height:6px;border-radius:50%;background:#3A4048"></span></span>
+              </div>
+              <div style="margin-top:8px;font-family:Archivo,sans-serif;font-variation-settings:'wdth' 116,'wght' 700;font-size:clamp(18px,1.5vw,22px);letter-spacing:-.015em">Captación</div>
+              <div style="margin-top:6px;font-size:13px;line-height:1.5;color:#9BA3AE">Demanda calificada entrando todos los días.</div>
+            </div>
+          </div>
+
+          <div data-node="2" style="position:relative;width:min(86%,360px);min-width:0;margin-left:14%;animation:sup-float-alt 11s ease-in-out infinite;animation-delay:1.4s">
+            <div data-mod="2" style="box-sizing:border-box;border:1px solid rgba(230,232,236,.10);background:#171B21;border-radius:14px;padding:13px 16px;box-shadow:0 14px 30px rgba(0,0,0,.46), 0 1px 0 rgba(230,232,236,.05) inset;transition:opacity .3s ease, transform .3s ease, border-color .5s ease, background-color .5s ease">
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.2em;color:#6B7280">
+                <span style="color:#FF8A3D">02</span>
+                <span style="display:flex;align-items:center;gap:7px"><span data-state="2" style="color:#6B7280">STANDBY</span><span data-dot="2" style="width:6px;height:6px;border-radius:50%;background:#3A4048"></span></span>
+              </div>
+              <div style="margin-top:8px;font-family:Archivo,sans-serif;font-variation-settings:'wdth' 116,'wght' 700;font-size:clamp(17px,1.35vw,20px);letter-spacing:-.01em">Conversión</div>
+              <div style="margin-top:6px;font-size:13px;line-height:1.5;color:#9BA3AE">Del click al contacto, sin fugas en el medio.</div>
+            </div>
+          </div>
+
+          <div data-node="3" style="position:relative;width:min(95%,400px);min-width:0;margin-left:5%;animation:sup-float 10.5s ease-in-out infinite;animation-delay:3.6s">
+            <div data-mod="3" style="box-sizing:border-box;border:1px solid rgba(230,232,236,.10);background:#171B21;border-radius:14px;padding:13px 16px;box-shadow:0 14px 30px rgba(0,0,0,.46), 0 1px 0 rgba(230,232,236,.05) inset;transition:opacity .3s ease, transform .3s ease, border-color .5s ease, background-color .5s ease">
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.2em;color:#6B7280">
+                <span style="color:#FF8A3D">03</span>
+                <span style="display:flex;align-items:center;gap:7px"><span data-state="3" style="color:#6B7280">STANDBY</span><span data-dot="3" style="width:6px;height:6px;border-radius:50%;background:#3A4048"></span></span>
+              </div>
+              <div style="margin-top:8px;font-family:Archivo,sans-serif;font-variation-settings:'wdth' 116,'wght' 700;font-size:clamp(17px,1.35vw,20px);letter-spacing:-.01em">Filtrado y cierre previo</div>
+              <div style="margin-top:6px;font-size:13px;line-height:1.5;color:#9BA3AE">Automatización que ordena y prioriza cada contacto.</div>
+            </div>
+          </div>
+
+          <div data-node="4" style="position:relative;width:min(80%,344px);min-width:0;margin-left:20%;animation:sup-float-alt 12.5s ease-in-out infinite;animation-delay:2.2s">
+            <div data-mod="4" style="box-sizing:border-box;border:1px solid rgba(230,232,236,.10);background:#171B21;border-radius:14px;padding:13px 16px;box-shadow:0 14px 30px rgba(0,0,0,.46), 0 1px 0 rgba(230,232,236,.05) inset;transition:opacity .3s ease, transform .3s ease, border-color .5s ease, background-color .5s ease">
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.2em;color:#6B7280">
+                <span style="color:#FF8A3D">04</span>
+                <span style="display:flex;align-items:center;gap:7px"><span data-state="4" style="color:#6B7280">STANDBY</span><span data-dot="4" style="width:6px;height:6px;border-radius:50%;background:#3A4048"></span></span>
+              </div>
+              <div style="margin-top:8px;font-family:Archivo,sans-serif;font-variation-settings:'wdth' 116,'wght' 700;font-size:clamp(17px,1.35vw,20px);letter-spacing:-.01em">Optimización continua</div>
+              <div style="margin-top:6px;font-size:13px;line-height:1.5;color:#9BA3AE">Lo que aprende el sistema vuelve a la captación cada semana.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div style="position:relative;flex:none;border-top:1px solid rgba(230,232,236,.09);background:#0D1013;overflow:hidden">
+      <div style="position:absolute;inset:0;background-image:url('assets/trama-oscura.png');background-size:340px;opacity:.55"></div>
+      <div style="position:absolute;inset:0;background-image:url('assets/trama-acentos.png');background-size:cover;opacity:.16;-webkit-mask-image:linear-gradient(to right,#000,transparent 42%);mask-image:linear-gradient(to right,#000,transparent 42%)"></div>
+      <div style="position:relative;display:flex;align-items:center;gap:20px;padding:14px clamp(20px,4vw,40px);flex-wrap:wrap">
+        <div style="flex:none;display:flex;align-items:center;gap:10px;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.2em;color:#6B7280">
+          <img src="assets/isotipo.png" alt="" style="height:14px;width:auto;display:block;opacity:.85">
+          <span style="width:22px;height:1px;background:rgba(230,232,236,.18)"></span>
+          EMPRESAS QUE CONFIARON EN SUPRADS
+        </div>
+        <div style="flex:1;min-width:180px;overflow:hidden;-webkit-mask-image:linear-gradient(to right,transparent,#000 5%,#000 92%,transparent);mask-image:linear-gradient(to right,transparent,#000 5%,#000 92%,transparent)">
+          <div style="display:flex;align-items:center;gap:clamp(18px,2.4vw,34px);white-space:nowrap;width:max-content;animation:sup-mq 26s linear infinite;font-family:Archivo,sans-serif;font-variation-settings:'wdth' 118,'wght' 700;font-size:clamp(19px,2vw,28px);letter-spacing:-.01em;color:#6B7280">
+            <span>NORTHLINE</span><span style="color:#FF4D3D">/</span><span>VERTEX</span><span style="color:#FF4D3D">/</span><span>CASA MAYO</span><span style="color:#FF4D3D">/</span><span>ANDINA</span><span style="color:#FF4D3D">/</span><span>GRUPO ROSS</span><span style="color:#FF4D3D">/</span><span>PAMPA DIGITAL</span><span style="color:#FF4D3D">/</span>
+            <span>NORTHLINE</span><span style="color:#FF4D3D">/</span><span>VERTEX</span><span style="color:#FF4D3D">/</span><span>CASA MAYO</span><span style="color:#FF4D3D">/</span><span>ANDINA</span><span style="color:#FF4D3D">/</span><span>GRUPO ROSS</span><span style="color:#FF4D3D">/</span><span>PAMPA DIGITAL</span><span style="color:#FF4D3D">/</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<section id="servicios" data-svcsection="1" style="position:relative;font-family:'Instrument Sans',system-ui,sans-serif;color:#E6E8EC;background:#111418;padding:0 0 clamp(80px,10vh,140px)">
+  <div style="position:absolute;inset:0;background-image:linear-gradient(to right, rgba(230,232,236,.035) 1px, transparent 1px),linear-gradient(to bottom, rgba(230,232,236,.035) 1px, transparent 1px);background-size:90px 90px;pointer-events:none"></div>
+
+  <div style="position:relative;padding:clamp(26px,4vh,44px) clamp(20px,4vw,40px) 0;display:flex;align-items:center;gap:14px;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.24em;color:#6B7280">
+    <span style="color:#FF8A3D">02 / MÓDULOS DEL SISTEMA</span>
+    <span style="flex:1;height:1px;background:linear-gradient(to right,rgba(255,138,61,.35),rgba(230,232,236,.10) 30%,transparent)"></span>
+    <span data-svccount="1">0 / 4 ACTIVOS</span>
+  </div>
+
+  <div style="position:relative;padding:clamp(18px,3vh,30px) clamp(20px,4vw,40px) clamp(28px,4vh,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(340px,100%),1fr));gap:clamp(18px,3vw,48px);align-items:end">
+    <h2 style="margin:0;font-family:Archivo,sans-serif;font-variation-settings:'wdth' 118,'wght' 800;font-size:clamp(32px,4.4vw,62px);line-height:.98;letter-spacing:-.035em">Cuatro módulos.
+      <span style="display:block;color:#FF4D3D;font-variation-settings:'wdth' 108,'wght' 580">Un solo sistema.</span>
+    </h2>
+    <p style="margin:0 0 8px;max-width:440px;font-size:clamp(14.5px,1.1vw,16px);line-height:1.62;color:#9BA3AE">El mismo circuito del hero, abierto pieza por pieza: cada módulo entra en operación cuando la señal llega hasta él.</p>
+  </div>
+
+  <div data-svcgrid="1" style="position:relative;padding:0 clamp(20px,4vw,40px) 0 clamp(20px,4vw,40px)">
+    <div data-svcstack="1" style="position:relative;padding-left:48px;display:flex;flex-direction:column;gap:clamp(26px,4vh,52px);align-items:flex-start">
+      <svg data-svcsvg="1" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible" fill="none">
+        <g stroke="rgba(230,232,236,.16)" stroke-width="1" fill="none">
+          <polyline data-spine="base" points=""></polyline>
+          <polyline data-branch="1" points=""></polyline>
+          <polyline data-branch="2" points=""></polyline>
+          <polyline data-branch="3" points=""></polyline>
+          <polyline data-branch="4" points=""></polyline>
+        </g>
+        <g stroke="#FF8A3D" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <polyline data-spine="sig" pathLength="100" stroke-dasharray="9 91" stroke-dashoffset="9" opacity="0" points=""></polyline>
+        </g>
+        <g fill="#3A4048">
+          <polygon data-svcarrow="1" points=""></polygon>
+          <polygon data-svcarrow="2" points=""></polygon>
+          <polygon data-svcarrow="3" points=""></polygon>
+          <polygon data-svcarrow="4" points=""></polygon>
+          <circle data-svctap="1" r="2.5"></circle>
+          <circle data-svctap="2" r="2.5"></circle>
+          <circle data-svctap="3" r="2.5"></circle>
+          <circle data-svctap="4" r="2.5"></circle>
+        </g>
+      </svg>
+
+      <div data-svc="1" style="position:relative;width:min(100%,720px);margin-left:0">
+        <div data-svcmod="1" style="position:relative;overflow:hidden;box-sizing:border-box;border:1px solid rgba(230,232,236,.09);background:#171B21;border-radius:18px;padding:clamp(18px,2vw,26px);box-shadow:0 14px 30px rgba(0,0,0,.46), 0 1px 0 rgba(230,232,236,.05) inset;transition:opacity .3s ease, transform .3s ease, border-color .5s ease, background-color .5s ease">
+          <div style="position:absolute;right:-40px;top:-30px;width:280px;height:280px;background-image:url('assets/trama-clara.png');background-size:300px;opacity:.05;-webkit-mask-image:radial-gradient(90% 90% at 100% 0%,#000,transparent 70%);mask-image:radial-gradient(90% 90% at 100% 0%,#000,transparent 70%);pointer-events:none"></div>
+          <div style="position:relative;display:flex;align-items:flex-start;justify-content:space-between;gap:18px;flex-wrap:wrap">
+            <div style="display:flex;align-items:baseline;gap:14px">
+              <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;color:#FF8A3D">01</span>
+              <h3 style="margin:0;font-family:Archivo,sans-serif;font-variation-settings:'wdth' 116,'wght' 740;font-size:clamp(21px,2.1vw,30px);line-height:1.05;letter-spacing:-.02em;max-width:460px">Sistemas de Captación por Performance</h3>
+            </div>
+            <span data-svctag="1" style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.2em;color:#FF4D3D;border:1px solid rgba(255,77,61,.35);border-radius:8px;padding:7px 11px;white-space:nowrap;transition:background-color .3s ease, color .3s ease">SOLO POR RESULTADOS</span>
+          </div>
+          <p style="position:relative;margin:14px 0 0;max-width:520px;font-size:14.5px;line-height:1.6;color:#9BA3AE">Construimos y operamos el circuito de captación completo. Y en captación, nuestro modelo es directo: cobramos cuando ganás.</p>
+          <div style="position:relative;margin-top:16px;padding-top:14px;border-top:1px solid rgba(230,232,236,.08);display:flex;align-items:center;justify-content:space-between;gap:12px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.2em;color:#6B7280">
+            <span>MÓDULO PRINCIPAL DEL SISTEMA</span>
+            <span style="display:flex;align-items:center;gap:7px"><span data-svcstate="1" style="color:#6B7280">STANDBY</span><span data-svcdot="1" style="width:6px;height:6px;border-radius:50%;background:#3A4048"></span></span>
+          </div>
+        </div>
+      </div>
+
+      <div data-svc="2" style="position:relative;width:min(74%,520px);margin-left:14%">
+        <div data-svcmod="2" style="box-sizing:border-box;border:1px solid rgba(230,232,236,.09);background:#171B21;border-radius:15px;padding:clamp(15px,1.6vw,20px);box-shadow:0 14px 30px rgba(0,0,0,.46), 0 1px 0 rgba(230,232,236,.05) inset;transition:opacity .3s ease, transform .3s ease, border-color .5s ease, background-color .5s ease">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:14px;flex-wrap:wrap">
+            <div style="display:flex;align-items:baseline;gap:12px">
+              <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;color:#FF8A3D">02</span>
+              <h3 style="margin:0;font-family:Archivo,sans-serif;font-variation-settings:'wdth' 116,'wght' 720;font-size:clamp(18px,1.6vw,23px);line-height:1.08;letter-spacing:-.015em">Automatización &amp; Chatbots</h3>
+            </div>
+            <span data-svctag="2" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.2em;color:#9BA3AE;border:1px solid rgba(230,232,236,.14);border-radius:8px;padding:6px 10px;white-space:nowrap;transition:background-color .3s ease, color .3s ease, border-color .3s ease">IMPLEMENTACIÓN + ABONO</span>
+          </div>
+          <p style="margin:12px 0 0;max-width:420px;font-size:14px;line-height:1.6;color:#9BA3AE">Automatización que ordena, califica y prepara la conversación comercial antes del cierre.</p>
+          <div style="margin-top:14px;padding-top:12px;border-top:1px solid rgba(230,232,236,.08);display:flex;align-items:center;justify-content:space-between;gap:12px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.2em;color:#6B7280">
+            <span>COMPLEMENTA 01</span>
+            <span style="display:flex;align-items:center;gap:7px"><span data-svcstate="2" style="color:#6B7280">STANDBY</span><span data-svcdot="2" style="width:6px;height:6px;border-radius:50%;background:#3A4048"></span></span>
+          </div>
+        </div>
+      </div>
+
+      <div data-svc="3" style="position:relative;width:min(74%,520px);margin-left:22%">
+        <div data-svcmod="3" style="box-sizing:border-box;border:1px solid rgba(230,232,236,.09);background:#171B21;border-radius:15px;padding:clamp(15px,1.6vw,20px);box-shadow:0 14px 30px rgba(0,0,0,.46), 0 1px 0 rgba(230,232,236,.05) inset;transition:opacity .3s ease, transform .3s ease, border-color .5s ease, background-color .5s ease">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:14px;flex-wrap:wrap">
+            <div style="display:flex;align-items:baseline;gap:12px">
+              <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;color:#FF8A3D">03</span>
+              <h3 style="margin:0;font-family:Archivo,sans-serif;font-variation-settings:'wdth' 116,'wght' 720;font-size:clamp(18px,1.6vw,23px);line-height:1.08;letter-spacing:-.015em">Performance Ads</h3>
+            </div>
+            <span data-svctag="3" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.2em;color:#9BA3AE;border:1px solid rgba(230,232,236,.14);border-radius:8px;padding:6px 10px;white-space:nowrap;transition:background-color .3s ease, color .3s ease, border-color .3s ease">FEE BASE + VARIABLE</span>
+          </div>
+          <p style="margin:12px 0 0;max-width:420px;font-size:14px;line-height:1.6;color:#9BA3AE">Pauta y creatividades operadas por nosotros en Meta, Google y TikTok.</p>
+          <div style="margin-top:14px;padding-top:12px;border-top:1px solid rgba(230,232,236,.08);display:flex;align-items:center;justify-content:space-between;gap:12px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.2em;color:#6B7280">
+            <span>COMPLEMENTA 01</span>
+            <span style="display:flex;align-items:center;gap:7px"><span data-svcstate="3" style="color:#6B7280">STANDBY</span><span data-svcdot="3" style="width:6px;height:6px;border-radius:50%;background:#3A4048"></span></span>
+          </div>
+        </div>
+      </div>
+
+      <div data-svc="4" data-last="1" style="position:relative;width:min(88%,620px);margin-left:4%">
+        <div data-svcmod="4" style="box-sizing:border-box;border:1px solid rgba(230,232,236,.09);background:#171B21;border-radius:15px;padding:clamp(15px,1.6vw,22px);box-shadow:0 14px 30px rgba(0,0,0,.46), 0 1px 0 rgba(230,232,236,.05) inset;transition:opacity .3s ease, transform .3s ease, border-color .5s ease, background-color .5s ease">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:14px;flex-wrap:wrap">
+            <div style="display:flex;align-items:baseline;gap:12px">
+              <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;color:#FF8A3D">04</span>
+              <h3 style="margin:0;font-family:Archivo,sans-serif;font-variation-settings:'wdth' 116,'wght' 720;font-size:clamp(18px,1.7vw,25px);line-height:1.08;letter-spacing:-.015em">Web &amp; E-commerce</h3>
+            </div>
+            <span data-svctag="4" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.2em;color:#9BA3AE;border:1px solid rgba(230,232,236,.14);border-radius:8px;padding:6px 10px;white-space:nowrap;transition:background-color .3s ease, color .3s ease, border-color .3s ease">PRECIO FIJO POR PROYECTO</span>
+          </div>
+          <p style="margin:12px 0 0;max-width:460px;font-size:14px;line-height:1.6;color:#9BA3AE">Landings, sitios y e-commerce donde el circuito aterriza: del click al contacto, sin fugas en el medio.</p>
+          <div style="margin-top:14px;padding-top:12px;border-top:1px solid rgba(230,232,236,.08);display:flex;align-items:center;justify-content:space-between;gap:12px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.2em;color:#6B7280">
+            <span>CIERRA EL CIRCUITO</span>
+            <span style="display:flex;align-items:center;gap:7px"><span data-svcstate="4" style="color:#6B7280">STANDBY</span><span data-svcdot="4" style="width:6px;height:6px;border-radius:50%;background:#3A4048"></span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="diferenciales" data-diffsection="1" style="position:relative;background:#F7F8FA;color:#111418;font-family:'Instrument Sans',system-ui,sans-serif;padding:clamp(56px,8vh,96px) 0 0;overflow:hidden">
+  <div style="position:absolute;inset:0;background-image:url('assets/trama-clara.png');background-size:520px;opacity:.5;pointer-events:none"></div>
+  <div style="position:absolute;left:0;right:0;top:0;height:1px;background:linear-gradient(to right,#FF4D3D,#FF8A3D 22%,rgba(17,20,24,.12) 22%,rgba(17,20,24,.12))"></div>
+
+  <div style="position:relative;padding:0 clamp(20px,4vw,40px);display:flex;align-items:center;gap:14px;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.24em;color:rgba(17,20,24,.5)">
+    <span style="color:#FF4D3D">03 / ARQUITECTURA DEL SISTEMA</span>
+    <span style="flex:1;height:1px;background:rgba(17,20,24,.14)"></span>
+    <span data-diffcount="1">MATRIZ 3 × 2</span>
+  </div>
+
+  <div style="position:relative;padding:clamp(18px,3vh,30px) clamp(20px,4vw,40px) clamp(30px,5vh,54px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(340px,100%),1fr));gap:clamp(18px,3vw,48px);align-items:end">
+    <h2 style="margin:0;font-family:Archivo,sans-serif;font-variation-settings:'wdth' 118,'wght' 800;font-size:clamp(30px,4.2vw,58px);line-height:1;letter-spacing:-.035em;color:#111418">Lo que no se ve
+      <span style="display:block;color:rgba(17,20,24,.42);font-variation-settings:'wdth' 108,'wght' 560">también hace que funcione.</span>
+    </h2>
+    <p style="margin:0 0 8px;max-width:420px;font-size:clamp(14.5px,1.1vw,16px);line-height:1.62;color:rgba(17,20,24,.6)">Seis decisiones estructurales que sostienen el sistema por debajo de lo que el cliente ve funcionando.</p>
+  </div>
+
+  <div data-diffmatrix="1" style="position:relative;margin:0 clamp(20px,4vw,40px) clamp(60px,9vh,110px);border-top:1px solid transparent;border-left:1px solid transparent;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr))">
+
+    <div data-diff="1" style="position:relative;border-right:1px solid transparent;border-bottom:1px solid transparent;padding:clamp(22px,2.4vw,34px);min-height:clamp(170px,20vh,220px);display:flex;flex-direction:column;justify-content:space-between;gap:20px;transition:background-color .3s ease">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:14px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.22em;color:#FF4D3D">01</span>
+        <svg data-diffcur="1" width="16" height="16" viewBox="0 0 16 16" style="opacity:0;transition:opacity .3s ease"><polygon points="1,1 15,7 8,8 7,15" fill="#FF4D3D"></polygon></svg>
+      </div>
+      <h3 style="margin:0;font-family:Archivo,sans-serif;font-variation-settings:'wdth' 116,'wght' 720;font-size:clamp(20px,1.9vw,27px);line-height:1.08;letter-spacing:-.02em;max-width:280px">Riesgo compartido de verdad</h3>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.2em;color:rgba(17,20,24,.36)">A1</span>
+    </div>
+
+    <div data-diff="2" style="position:relative;border-right:1px solid transparent;border-bottom:1px solid transparent;padding:clamp(22px,2.4vw,34px);min-height:clamp(170px,20vh,220px);display:flex;flex-direction:column;justify-content:space-between;gap:20px;transition:background-color .3s ease">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:14px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.22em;color:#FF4D3D">02</span>
+        <svg data-diffcur="2" width="16" height="16" viewBox="0 0 16 16" style="opacity:0;transition:opacity .3s ease"><polygon points="1,1 15,7 8,8 7,15" fill="#FF4D3D"></polygon></svg>
+      </div>
+      <h3 style="margin:0;font-family:Archivo,sans-serif;font-variation-settings:'wdth' 116,'wght' 720;font-size:clamp(20px,1.9vw,27px);line-height:1.08;letter-spacing:-.02em;max-width:280px">Operación de punta a punta</h3>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.2em;color:rgba(17,20,24,.36)">A2</span>
+    </div>
+
+    <div data-diff="3" style="position:relative;border-right:1px solid transparent;border-bottom:1px solid transparent;padding:clamp(22px,2.4vw,34px);min-height:clamp(170px,20vh,220px);display:flex;flex-direction:column;justify-content:space-between;gap:20px;transition:background-color .3s ease">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:14px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.22em;color:#FF4D3D">03</span>
+        <svg data-diffcur="3" width="16" height="16" viewBox="0 0 16 16" style="opacity:0;transition:opacity .3s ease"><polygon points="1,1 15,7 8,8 7,15" fill="#FF4D3D"></polygon></svg>
+      </div>
+      <div>
+        <h3 style="margin:0;font-family:Archivo,sans-serif;font-variation-settings:'wdth' 116,'wght' 720;font-size:clamp(20px,1.9vw,27px);line-height:1.08;letter-spacing:-.02em;max-width:280px">Infraestructura blindada</h3>
+        <span style="display:inline-block;margin-top:10px;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.2em;color:#111418;border:1px solid rgba(17,20,24,.2);border-radius:7px;padding:5px 9px">TRACKING / CAPI</span>
+      </div>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.2em;color:rgba(17,20,24,.36)">A3</span>
+    </div>
+
+    <div data-diff="4" style="position:relative;border-right:1px solid transparent;border-bottom:1px solid transparent;padding:clamp(22px,2.4vw,34px);min-height:clamp(170px,20vh,220px);display:flex;flex-direction:column;justify-content:space-between;gap:20px;transition:background-color .3s ease">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:14px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.22em;color:#FF4D3D">04</span>
+        <svg data-diffcur="4" width="16" height="16" viewBox="0 0 16 16" style="opacity:0;transition:opacity .3s ease"><polygon points="1,1 15,7 8,8 7,15" fill="#FF4D3D"></polygon></svg>
+      </div>
+      <h3 style="margin:0;font-family:Archivo,sans-serif;font-variation-settings:'wdth' 116,'wght' 720;font-size:clamp(20px,1.9vw,27px);line-height:1.08;letter-spacing:-.02em;max-width:280px">Transparencia total de costos</h3>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.2em;color:rgba(17,20,24,.36)">B1</span>
+    </div>
+
+    <div data-diff="5" style="position:relative;border-right:1px solid transparent;border-bottom:1px solid transparent;padding:clamp(22px,2.4vw,34px);min-height:clamp(170px,20vh,220px);display:flex;flex-direction:column;justify-content:space-between;gap:20px;transition:background-color .3s ease">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:14px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.22em;color:#FF4D3D">05</span>
+        <svg data-diffcur="5" width="16" height="16" viewBox="0 0 16 16" style="opacity:0;transition:opacity .3s ease"><polygon points="1,1 15,7 8,8 7,15" fill="#FF4D3D"></polygon></svg>
+      </div>
+      <h3 style="margin:0;font-family:Archivo,sans-serif;font-variation-settings:'wdth' 116,'wght' 720;font-size:clamp(20px,1.9vw,27px);line-height:1.08;letter-spacing:-.02em;max-width:280px">Equipo directo</h3>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.2em;color:rgba(17,20,24,.36)">B2</span>
+    </div>
+
+    <div data-diff="6" style="position:relative;border-right:1px solid transparent;border-bottom:1px solid transparent;padding:clamp(22px,2.4vw,34px);min-height:clamp(170px,20vh,220px);display:flex;flex-direction:column;justify-content:space-between;gap:20px;transition:background-color .3s ease">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:14px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.22em;color:#FF4D3D">06</span>
+        <svg data-diffcur="6" width="16" height="16" viewBox="0 0 16 16" style="opacity:0;transition:opacity .3s ease"><polygon points="1,1 15,7 8,8 7,15" fill="#FF4D3D"></polygon></svg>
+      </div>
+      <h3 style="margin:0;font-family:Archivo,sans-serif;font-variation-settings:'wdth' 116,'wght' 720;font-size:clamp(20px,1.9vw,27px);line-height:1.08;letter-spacing:-.02em;max-width:280px">Números en los que confiar</h3>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.2em;color:rgba(17,20,24,.36)">B3</span>
+    </div>
+  </div>
+
+  <div style="position:relative;height:clamp(90px,13vh,150px);background:#F7F8FA">
+    <div style="position:absolute;inset:0;background:#111418;clip-path:polygon(0 100%, 100% 0, 100% 100%)"></div>
+    <div style="position:absolute;left:0;right:0;bottom:0;height:100%;background-image:url('assets/trama-acentos.png');background-size:cover;opacity:.2;clip-path:polygon(0 100%, 100% 0, 100% 100%)"></div>
+    <div style="position:absolute;left:clamp(20px,4vw,40px);bottom:18px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.24em;color:rgba(230,232,236,.55)">CIERRE DE DOCUMENTACIÓN · VOLVIENDO AL SISTEMA</div>
+  </div>
+</section>
+
+<section id="como" data-procsection="1" style="position:relative;background:#111418;color:#E6E8EC;font-family:'Instrument Sans',system-ui,sans-serif;padding:clamp(30px,5vh,60px) 0 clamp(80px,12vh,160px)">
+  <div style="position:absolute;inset:0;background-image:linear-gradient(to right, rgba(230,232,236,.035) 1px, transparent 1px),linear-gradient(to bottom, rgba(230,232,236,.035) 1px, transparent 1px);background-size:90px 90px;pointer-events:none"></div>
+
+  <div style="position:relative;padding:0 clamp(20px,4vw,40px);display:flex;align-items:center;gap:14px;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.24em;color:#6B7280">
+    <span style="color:#FF8A3D">04 / CÓMO TRABAJAMOS</span>
+    <span style="flex:1;height:1px;background:linear-gradient(to right,rgba(255,138,61,.35),rgba(230,232,236,.10) 30%,transparent)"></span>
+    <span data-procstate="1">PASO 01 / 03</span>
+  </div>
+
+  <div style="position:relative;padding:clamp(24px,4vh,44px) clamp(20px,4vw,40px) 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:clamp(20px,4vw,64px);align-items:start">
+
+    <div style="position:sticky;top:clamp(60px,14vh,140px);align-self:start;display:flex;gap:clamp(16px,2vw,28px)">
+      <div style="position:relative;flex:none;width:2px;background:rgba(230,232,236,.12);border-radius:2px;min-height:clamp(150px,26vh,260px)">
+        <div data-procfill="1" style="position:absolute;left:0;right:0;top:0;height:0%;background:linear-gradient(to bottom,#FF4D3D,#FF8A3D);border-radius:2px;transition:height .35s ease"></div>
+        <svg data-proccur="1" width="14" height="14" viewBox="0 0 16 16" style="position:absolute;left:6px;top:0%;transform:translateY(-4px);transition:top .35s ease"><polygon points="1,1 15,7 8,8 7,15" fill="#FF8A3D"></polygon></svg>
+      </div>
+      <div>
+        <div data-procnum="1" style="font-family:Archivo,sans-serif;font-variation-settings:'wdth' 118,'wght' 800;font-size:clamp(64px,11vw,150px);line-height:.82;letter-spacing:-.05em;color:#E6E8EC;transition:opacity .3s ease">01</div>
+        <div style="margin-top:14px;display:flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.2em;color:#6B7280">
+          <span data-procdot="1" style="width:6px;height:6px;border-radius:50%;background:#FF4D3D;animation:sup-pulse 2.6s ease-out infinite"></span>
+          <span data-proclabel="1">EN CURSO</span>
+        </div>
+        <div style="margin-top:18px;display:flex;gap:6px">
+          <span data-procpip="1" style="width:22px;height:2px;background:#FF4D3D;transition:background-color .3s ease"></span>
+          <span data-procpip="2" style="width:22px;height:2px;background:rgba(230,232,236,.16);transition:background-color .3s ease"></span>
+          <span data-procpip="3" style="width:22px;height:2px;background:rgba(230,232,236,.16);transition:background-color .3s ease"></span>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:clamp(60px,14vh,180px);padding-bottom:clamp(40px,10vh,140px)">
+
+      <div data-step="1" style="min-height:clamp(220px,42vh,420px);display:flex;flex-direction:column;justify-content:center;transition:opacity .4s ease">
+        <div style="display:flex;align-items:center;gap:12px;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.22em;color:#FF8A3D">
+          <span style="width:26px;height:1px;background:#FF8A3D"></span>PASO 01
+        </div>
+        <h3 style="margin:16px 0 0;font-family:Archivo,sans-serif;font-variation-settings:'wdth' 116,'wght' 760;font-size:clamp(28px,3.4vw,48px);line-height:1.02;letter-spacing:-.03em;max-width:520px">Llamada de diagnóstico</h3>
+        <div style="margin-top:20px;display:inline-flex;align-self:flex-start;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;color:#9BA3AE;border:1px solid rgba(230,232,236,.14);border-radius:9px;padding:9px 13px">30 MINUTOS · SIN COSTO · SIN COMPROMISO</div>
+      </div>
+
+      <div data-step="2" style="min-height:clamp(220px,42vh,420px);display:flex;flex-direction:column;justify-content:center;transition:opacity .4s ease">
+        <div style="display:flex;align-items:center;gap:12px;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.22em;color:#FF8A3D">
+          <span style="width:26px;height:1px;background:#FF8A3D"></span>PASO 02
+        </div>
+        <h3 style="margin:16px 0 0;font-family:Archivo,sans-serif;font-variation-settings:'wdth' 116,'wght' 760;font-size:clamp(28px,3.4vw,48px);line-height:1.02;letter-spacing:-.03em;max-width:520px">Propuesta a medida</h3>
+        <div style="margin-top:22px;display:flex;align-items:baseline;gap:14px;border-top:1px solid rgba(230,232,236,.12);padding-top:16px;max-width:420px">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:clamp(26px,3vw,40px);letter-spacing:-.02em;color:#FF8A3D">72</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.24em;color:#9BA3AE">HS HÁBILES</span>
+        </div>
+      </div>
+
+      <div data-step="3" style="min-height:clamp(220px,42vh,420px);display:flex;flex-direction:column;justify-content:center;transition:opacity .4s ease">
+        <div style="display:flex;align-items:center;gap:12px;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.22em;color:#FF8A3D">
+          <span style="width:26px;height:1px;background:#FF8A3D"></span>PASO 03
+        </div>
+        <h3 style="margin:16px 0 0;font-family:Archivo,sans-serif;font-variation-settings:'wdth' 116,'wght' 760;font-size:clamp(28px,3.4vw,48px);line-height:1.02;letter-spacing:-.03em;max-width:520px">Implementación y operación con métricas abiertas</h3>
+        <div style="margin-top:22px;display:flex;flex-direction:column;gap:9px;border-left:1px solid rgba(230,232,236,.12);padding-left:16px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;color:#9BA3AE">
+          <span style="color:#6B7280">SISTEMA IMPLEMENTADO</span>
+          <span style="display:flex;align-items:center;gap:9px"><span data-procend="1" style="width:6px;height:6px;border-radius:50%;background:#3A4048"></span>OPERACIÓN ACTIVA</span>
+          <span style="display:flex;align-items:center;gap:9px"><span data-procend="2" style="width:6px;height:6px;border-radius:50%;background:#3A4048"></span>MÉTRICAS ABIERTAS</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="resultados" data-ressection="1" style="position:relative;background:#111418;color:#E6E8EC;font-family:'Instrument Sans',system-ui,sans-serif;padding:clamp(48px,8vh,90px) 0 clamp(56px,9vh,110px);border-top:1px solid rgba(230,232,236,.09)">
+  <div style="position:relative;padding:0 clamp(20px,4vw,40px);display:flex;align-items:center;gap:14px;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.24em;color:#6B7280">
+    <span style="color:#FF8A3D">05 / RESULTADOS</span>
+    <span style="flex:1;height:1px;background:rgba(230,232,236,.12)"></span>
+    <span>TELEMETRÍA · 4 MÉTRICAS</span>
+  </div>
+
+  <div style="position:relative;padding:clamp(18px,3vh,30px) clamp(20px,4vw,40px) clamp(24px,4vh,44px);max-width:720px">
+    <h2 style="margin:0;font-family:Archivo,sans-serif;font-variation-settings:'wdth' 118,'wght' 800;font-size:clamp(28px,3.8vw,52px);line-height:1;letter-spacing:-.035em">El sistema se mide.
+      <span style="color:#6B7280;font-variation-settings:'wdth' 108,'wght' 560"> Por eso se puede mejorar.</span>
+    </h2>
+  </div>
+
+  <div data-reswall="1" style="position:relative;padding:0 clamp(20px,4vw,40px)">
+    <div data-res="1" style="border-top:1px solid transparent;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:clamp(10px,2vw,32px);align-items:baseline;padding:clamp(20px,3vh,34px) 0;transition:opacity .4s ease;opacity:.25">
+      <div style="display:flex;align-items:baseline;gap:14px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.2em;color:#6B7280">01</span>
+        <span data-resnum="1" style="font-family:'JetBrains Mono',monospace;font-size:clamp(44px,7vw,96px);line-height:.9;letter-spacing:-.04em;color:#F7F8FA">—</span>
+      </div>
+      <div style="max-width:340px;font-size:14.5px;line-height:1.55;color:#9BA3AE">Descripción de la métrica<span style="display:block;margin-top:8px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.2em;color:#FF4D3D">TODO: MÉTRICA REAL</span></div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.2em;color:#6B7280;justify-self:start">RUBRO ANONIMIZADO · A DEFINIR</div>
+    </div>
+
+    <div data-res="2" style="border-top:1px solid transparent;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:clamp(10px,2vw,32px);align-items:baseline;padding:clamp(20px,3vh,34px) 0;transition:opacity .4s ease;opacity:.25">
+      <div style="display:flex;align-items:baseline;gap:14px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.2em;color:#6B7280">02</span>
+        <span data-resnum="2" style="font-family:'JetBrains Mono',monospace;font-size:clamp(44px,7vw,96px);line-height:.9;letter-spacing:-.04em;color:#F7F8FA">—</span>
+      </div>
+      <div style="max-width:340px;font-size:14.5px;line-height:1.55;color:#9BA3AE">Descripción de la métrica<span style="display:block;margin-top:8px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.2em;color:#FF4D3D">TODO: MÉTRICA REAL</span></div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.2em;color:#6B7280;justify-self:start">RUBRO ANONIMIZADO · A DEFINIR</div>
+    </div>
+
+    <div data-res="3" style="border-top:1px solid transparent;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:clamp(10px,2vw,32px);align-items:baseline;padding:clamp(20px,3vh,34px) 0;transition:opacity .4s ease;opacity:.25">
+      <div style="display:flex;align-items:baseline;gap:14px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.2em;color:#6B7280">03</span>
+        <span data-resnum="3" style="font-family:'JetBrains Mono',monospace;font-size:clamp(44px,7vw,96px);line-height:.9;letter-spacing:-.04em;color:#F7F8FA">—</span>
+      </div>
+      <div style="max-width:340px;font-size:14.5px;line-height:1.55;color:#9BA3AE">Descripción de la métrica<span style="display:block;margin-top:8px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.2em;color:#FF4D3D">TODO: MÉTRICA REAL</span></div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.2em;color:#6B7280;justify-self:start">RUBRO ANONIMIZADO · A DEFINIR</div>
+    </div>
+
+    <div data-res="4" style="border-top:1px solid transparent;border-bottom:1px solid transparent;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:clamp(10px,2vw,32px);align-items:baseline;padding:clamp(20px,3vh,34px) 0;transition:opacity .4s ease;opacity:.25">
+      <div style="display:flex;align-items:baseline;gap:14px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.2em;color:#6B7280">04</span>
+        <span data-resnum="4" style="font-family:'JetBrains Mono',monospace;font-size:clamp(44px,7vw,96px);line-height:.9;letter-spacing:-.04em;color:#F7F8FA">—</span>
+      </div>
+      <div style="max-width:340px;font-size:14.5px;line-height:1.55;color:#9BA3AE">Descripción de la métrica<span style="display:block;margin-top:8px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.2em;color:#FF4D3D">TODO: MÉTRICA REAL</span></div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.2em;color:#6B7280;justify-self:start">RUBRO ANONIMIZADO · A DEFINIR</div>
+    </div>
+
+    <p style="margin:clamp(18px,3vh,28px) 0 0;max-width:620px;font-family:'JetBrains Mono',monospace;font-size:9.5px;line-height:1.9;letter-spacing:.14em;color:#6B7280">LAS MÉTRICAS SE PUBLICAN ÚNICAMENTE CON DATOS VERIFICADOS Y BAJO ACUERDO DE CONFIDENCIALIDAD CON CADA CLIENTE.</p>
+  </div>
+</section>
+
+<section id="testimonios" data-testsection="1" style="position:relative;background:#111418;color:#E6E8EC;font-family:'Instrument Sans',system-ui,sans-serif;padding:clamp(50px,9vh,110px) clamp(20px,4vw,40px) clamp(60px,10vh,130px)">
+  <div style="display:flex;align-items:center;gap:14px;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.24em;color:#6B7280;margin-bottom:clamp(30px,6vh,70px)">
+    <span style="color:#FF8A3D">06 / VALIDACIÓN</span>
+    <span style="flex:1;height:1px;background:rgba(230,232,236,.12)"></span>
+    <span>2 TESTIMONIOS · PENDIENTES DE AUTORIZACIÓN</span>
+  </div>
+
+  <blockquote data-test="1" style="margin:0;max-width:820px;border-left:1px solid rgba(255,138,61,.4);padding-left:clamp(18px,3vw,40px);transition:opacity .5s ease;opacity:.3">
+    <p style="margin:0;font-family:Archivo,sans-serif;font-variation-settings:'wdth' 112,'wght' 560;font-size:clamp(21px,2.8vw,40px);line-height:1.18;letter-spacing:-.025em;color:#E6E8EC;text-wrap:pretty">TODO: quote real pendiente de autorización.</p>
+    <footer style="margin-top:22px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.2em;color:#6B7280">
+      <span>CARGO · A DEFINIR</span><span style="color:#FF4D3D">/</span><span>RUBRO · A DEFINIR</span>
+    </footer>
+  </blockquote>
+
+  <div style="display:flex;justify-content:flex-end;margin-top:clamp(40px,8vh,100px)">
+    <blockquote data-test="2" style="margin:0;max-width:760px;text-align:right;border-right:1px solid rgba(255,77,61,.4);padding-right:clamp(18px,3vw,40px);transition:opacity .5s ease;opacity:.3">
+      <p style="margin:0;font-family:Archivo,sans-serif;font-variation-settings:'wdth' 112,'wght' 560;font-size:clamp(20px,2.5vw,36px);line-height:1.2;letter-spacing:-.025em;color:#E6E8EC;text-wrap:pretty">TODO: quote real pendiente de autorización.</p>
+      <footer style="margin-top:22px;display:flex;justify-content:flex-end;align-items:center;gap:12px;flex-wrap:wrap;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.2em;color:#6B7280">
+        <span>CARGO · A DEFINIR</span><span style="color:#FF4D3D">/</span><span>RUBRO · A DEFINIR</span>
+      </footer>
+    </blockquote>
+  </div>
+</section>
+
+<section id="cta" data-ctasection="1" style="position:relative;background:#111418;padding:0 clamp(20px,4vw,40px) clamp(60px,10vh,130px);font-family:'Instrument Sans',system-ui,sans-serif">
+  <div style="position:relative;overflow:hidden;border-radius:20px;background:#FF4D3D;color:#111418;padding:clamp(34px,6vw,76px) clamp(24px,4vw,60px)">
+    <div style="position:absolute;inset:0;background-image:url('assets/trama-acentos.png');background-size:cover;opacity:.22;mix-blend-mode:multiply;-webkit-mask-image:linear-gradient(250deg,#000,transparent 62%);mask-image:linear-gradient(250deg,#000,transparent 62%);pointer-events:none"></div>
+    <div data-ctaline="1" style="position:absolute;left:clamp(24px,4vw,60px);top:0;width:1px;height:0;background:rgba(17,20,24,.45);transition:height .6s ease"></div>
+    <div style="position:relative;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:clamp(24px,4vw,56px);align-items:end">
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.24em;color:rgba(17,20,24,.62)">SIGUIENTE PASO</div>
+        <h2 style="margin:16px 0 0;font-family:Archivo,sans-serif;font-variation-settings:'wdth' 118,'wght' 800;font-size:clamp(32px,5vw,72px);line-height:.98;letter-spacing:-.04em;color:#111418">Empecemos por los números.</h2>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:flex-start;gap:14px">
+        <a href="#TODO-CALENDLY-URL" data-placeholder="CALENDLY_URL" target="_blank" rel="noopener" style="background:#111418;color:#F7F8FA;font-size:16px;font-weight:600;padding:18px 30px;border-radius:12px;box-shadow:0 14px 30px rgba(17,20,24,.28)">Agendar llamada</a>
+        <a href="#TODO-WHATSAPP-URL" data-placeholder="WHATSAPP_URL" target="_blank" rel="noopener" style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.2em;color:rgba(17,20,24,.7)">O ESCRIBINOS POR WHATSAPP</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq" data-faqsection="1" style="position:relative;background:#111418;color:#E6E8EC;font-family:'Instrument Sans',system-ui,sans-serif;padding:clamp(40px,7vh,80px) clamp(20px,4vw,40px) clamp(60px,10vh,120px)">
+  <div style="display:flex;align-items:center;gap:14px;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.24em;color:#6B7280">
+    <span style="color:#FF8A3D">07 / FAQ</span>
+    <span style="flex:1;height:1px;background:rgba(230,232,236,.12)"></span>
+    <span>DOCUMENTACIÓN</span>
+  </div>
+  <h2 style="margin:clamp(18px,3vh,28px) 0 clamp(26px,5vh,52px);max-width:620px;font-family:Archivo,sans-serif;font-variation-settings:'wdth' 118,'wght' 800;font-size:clamp(26px,3.4vw,46px);line-height:1.02;letter-spacing:-.035em">Todo lo que se pregunta antes de empezar.</h2>
+
+  <div data-faqlist="1" style="border-top:1px solid rgba(230,232,236,.12)">
+    <details data-faq="1" style="border-bottom:1px solid rgba(230,232,236,.12)">
+      <summary style="list-style:none;cursor:pointer;display:flex;align-items:center;gap:clamp(14px,2vw,28px);padding:clamp(18px,2.6vh,26px) 0;outline-offset:4px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.2em;color:#6B7280">01</span>
+        <span style="flex:1;font-family:Archivo,sans-serif;font-variation-settings:'wdth' 114,'wght' 640;font-size:clamp(17px,1.7vw,23px);letter-spacing:-.015em">Cómo funciona el modelo de performance</span>
+        <span data-faqsign="1" style="font-family:'JetBrains Mono',monospace;font-size:16px;color:#6B7280;transition:transform .2s ease, color .2s ease">+</span>
+      </summary>
+      <p style="margin:0 0 clamp(18px,2.6vh,26px);padding-left:clamp(28px,4vw,58px);max-width:720px;font-size:15px;line-height:1.65;color:#9BA3AE">TODO: respuesta definitiva pendiente del archivo base.</p>
+    </details>
+    <details data-faq="2" style="border-bottom:1px solid rgba(230,232,236,.12)">
+      <summary style="list-style:none;cursor:pointer;display:flex;align-items:center;gap:clamp(14px,2vw,28px);padding:clamp(18px,2.6vh,26px) 0;outline-offset:4px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.2em;color:#6B7280">02</span>
+        <span style="flex:1;font-family:Archivo,sans-serif;font-variation-settings:'wdth' 114,'wght' 640;font-size:clamp(17px,1.7vw,23px);letter-spacing:-.015em">Quién paga la pauta y las herramientas</span>
+        <span data-faqsign="2" style="font-family:'JetBrains Mono',monospace;font-size:16px;color:#6B7280;transition:transform .2s ease, color .2s ease">+</span>
+      </summary>
+      <p style="margin:0 0 clamp(18px,2.6vh,26px);padding-left:clamp(28px,4vw,58px);max-width:720px;font-size:15px;line-height:1.65;color:#9BA3AE">TODO: respuesta definitiva pendiente del archivo base.</p>
+    </details>
+    <details data-faq="3" style="border-bottom:1px solid rgba(230,232,236,.12)">
+      <summary style="list-style:none;cursor:pointer;display:flex;align-items:center;gap:clamp(14px,2vw,28px);padding:clamp(18px,2.6vh,26px) 0;outline-offset:4px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.2em;color:#6B7280">03</span>
+        <span style="flex:1;font-family:Archivo,sans-serif;font-variation-settings:'wdth' 114,'wght' 640;font-size:clamp(17px,1.7vw,23px);letter-spacing:-.015em">Trabajan fuera de Argentina</span>
+        <span data-faqsign="3" style="font-family:'JetBrains Mono',monospace;font-size:16px;color:#6B7280;transition:transform .2s ease, color .2s ease">+</span>
+      </summary>
+      <p style="margin:0 0 clamp(18px,2.6vh,26px);padding-left:clamp(28px,4vw,58px);max-width:720px;font-size:15px;line-height:1.65;color:#9BA3AE">TODO: respuesta definitiva pendiente del archivo base.</p>
+    </details>
+    <details data-faq="4" style="border-bottom:1px solid rgba(230,232,236,.12)">
+      <summary style="list-style:none;cursor:pointer;display:flex;align-items:center;gap:clamp(14px,2vw,28px);padding:clamp(18px,2.6vh,26px) 0;outline-offset:4px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.2em;color:#6B7280">04</span>
+        <span style="flex:1;font-family:Archivo,sans-serif;font-variation-settings:'wdth' 114,'wght' 640;font-size:clamp(17px,1.7vw,23px);letter-spacing:-.015em">Qué pasa si no hay resultados</span>
+        <span data-faqsign="4" style="font-family:'JetBrains Mono',monospace;font-size:16px;color:#6B7280;transition:transform .2s ease, color .2s ease">+</span>
+      </summary>
+      <p style="margin:0 0 clamp(18px,2.6vh,26px);padding-left:clamp(28px,4vw,58px);max-width:720px;font-size:15px;line-height:1.65;color:#9BA3AE">TODO: respuesta definitiva pendiente del archivo base.</p>
+    </details>
+    <details data-faq="5" style="border-bottom:1px solid rgba(230,232,236,.12)">
+      <summary style="list-style:none;cursor:pointer;display:flex;align-items:center;gap:clamp(14px,2vw,28px);padding:clamp(18px,2.6vh,26px) 0;outline-offset:4px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.2em;color:#6B7280">05</span>
+        <span style="flex:1;font-family:Archivo,sans-serif;font-variation-settings:'wdth' 114,'wght' 640;font-size:clamp(17px,1.7vw,23px);letter-spacing:-.015em">Cuánto tarda la implementación</span>
+        <span data-faqsign="5" style="font-family:'JetBrains Mono',monospace;font-size:16px;color:#6B7280;transition:transform .2s ease, color .2s ease">+</span>
+      </summary>
+      <p style="margin:0 0 clamp(18px,2.6vh,26px);padding-left:clamp(28px,4vw,58px);max-width:720px;font-size:15px;line-height:1.65;color:#9BA3AE">TODO: respuesta definitiva pendiente del archivo base.</p>
+    </details>
+    <details data-faq="6" style="border-bottom:1px solid rgba(230,232,236,.12)">
+      <summary style="list-style:none;cursor:pointer;display:flex;align-items:center;gap:clamp(14px,2vw,28px);padding:clamp(18px,2.6vh,26px) 0;outline-offset:4px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.2em;color:#6B7280">06</span>
+        <span style="flex:1;font-family:Archivo,sans-serif;font-variation-settings:'wdth' 114,'wght' 640;font-size:clamp(17px,1.7vw,23px);letter-spacing:-.015em">Qué necesita el cliente para arrancar</span>
+        <span data-faqsign="6" style="font-family:'JetBrains Mono',monospace;font-size:16px;color:#6B7280;transition:transform .2s ease, color .2s ease">+</span>
+      </summary>
+      <p style="margin:0 0 clamp(18px,2.6vh,26px);padding-left:clamp(28px,4vw,58px);max-width:720px;font-size:15px;line-height:1.65;color:#9BA3AE">TODO: respuesta definitiva pendiente del archivo base.</p>
+    </details>
+  </div>
+</section>
+
+<footer style="position:relative;background:#0D1013;color:#E6E8EC;font-family:'Instrument Sans',system-ui,sans-serif;overflow:hidden;border-top:1px solid rgba(230,232,236,.09)">
+  <div style="position:absolute;inset:0;background-image:url('assets/trama-oscura.png');background-size:420px;opacity:.5;pointer-events:none"></div>
+  <div style="position:relative;padding:clamp(46px,8vh,90px) clamp(20px,4vw,40px) clamp(26px,4vh,40px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:clamp(28px,4vw,64px)">
+    <div style="max-width:360px">
+      <img src="assets/logo-horizontal.png" alt="Suprads" loading="lazy" style="height:34px;width:auto;display:block">
+      <div style="margin-top:12px;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.24em;color:#FF8A3D">SOLUCIONES DIGITALES INTEGRALES</div>
+      <p style="margin:18px 0 0;font-size:14.5px;line-height:1.6;color:#9BA3AE">Sistemas de crecimiento productizados para Argentina y LATAM.</p>
+    </div>
+    <div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.24em;color:#6B7280;margin-bottom:16px">SECCIONES</div>
+      <div style="display:flex;flex-direction:column;gap:11px;font-size:14.5px">
+        <a href="#servicios" style="color:#E6E8EC">Servicios</a>
+        <a href="#como" style="color:#E6E8EC">Cómo trabajamos</a>
+        <a href="#resultados" style="color:#E6E8EC">Resultados</a>
+        <a href="#faq" style="color:#E6E8EC">FAQ</a>
+      </div>
+    </div>
+    <div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.24em;color:#6B7280;margin-bottom:16px">REDES</div>
+      <div style="display:flex;flex-direction:column;gap:11px;font-size:14.5px">
+        <a href="#TODO-INSTAGRAM-URL" data-placeholder="INSTAGRAM_URL" target="_blank" rel="noopener" style="color:#E6E8EC">Instagram</a>
+        <a href="#TODO-LINKEDIN-URL" data-placeholder="LINKEDIN_URL" target="_blank" rel="noopener" style="color:#E6E8EC">LinkedIn</a>
+        <a href="#TODO-WHATSAPP-URL" data-placeholder="WHATSAPP_URL" target="_blank" rel="noopener" style="color:#E6E8EC">WhatsApp</a>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:flex-start;gap:14px">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.24em;color:#6B7280">SIGUIENTE PASO</div>
+      <a href="#TODO-CALENDLY-URL" data-placeholder="CALENDLY_URL" target="_blank" rel="noopener" style="background:#FF4D3D;color:#111418;font-size:15px;font-weight:600;padding:14px 22px;border-radius:10px">Agendar llamada</a>
+    </div>
+  </div>
+  <div style="position:relative;padding:0 clamp(20px,4vw,40px) clamp(30px,5vh,52px);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.2em;color:#6B7280;border-top:1px solid rgba(230,232,236,.08);padding-top:20px;margin:0 clamp(20px,4vw,40px)">
+    <span>© 2026 SUPRADS S.R.L.</span>
+    <span style="color:#FF4D3D">TODO: CALENDLY_URL · WHATSAPP_URL · REDES</span>
+    <span style="display:flex;align-items:center;gap:9px"><img src="assets/isotipo.png" alt="" loading="lazy" style="height:13px;width:auto;opacity:.7">SISTEMAS DE CRECIMIENTO</span>
+  </div>
+</footer>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+const WIN = [[0.06, 0.22], [0.28, 0.44], [0.50, 0.66], [0.72, 0.92]];
+const HOT = "#FF4D3D", WARM = "#FF8A3D", OFF = "#3A4048";
+const clamp01 = v => v < 0 ? 0 : v > 1 ? 1 : v;
+
+class Component extends DCLogic {
+  renderVals() { return { ready: true }; }
+
+  componentDidMount() {
+    this.reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    this.cleanups = [];
+    const boot = () => { try { this.boot(); } catch (e) { console.error("[suprads] boot", e); } };
+    boot();
+    requestAnimationFrame(boot);
+    setTimeout(boot, 400);
+  }
+
+  boot() {
+    if (this.booted) {
+      this.layout(); this.apply(this.ctx.p);
+      if (this.svc) { this.layoutSvc(); this.applySvc(this.svc.p); }
+      return;
+    }
+    {
+      const root = document.getElementById("supRoot");
+      if (!root) return;
+      this.booted = true;
+      window.__supHero = this;
+      this.root = root;
+      this.ctx = {
+        box: root.querySelector('[data-circuit="auto"]'),
+        nodes: [1, 2, 3, 4].map(i => ({
+          wrap: root.querySelector('[data-node="' + i + '"]'),
+          mod: root.querySelector('[data-mod="' + i + '"]'),
+          dot: root.querySelector('[data-dot="' + i + '"]'),
+          state: root.querySelector('[data-state="' + i + '"]'),
+          jnode: root.querySelector('[data-jnode="' + i + '"]'),
+          arrow: root.querySelector('[data-arrow="' + i + '"]')
+        })),
+        bases: Array.from(root.querySelectorAll("[data-base]")),
+        sigs: Array.from(root.querySelectorAll("[data-sig]")),
+        pulses: Array.from(root.querySelectorAll("[data-pulse]")),
+        sysdot: root.querySelector("[data-sysdot]"),
+        sysmsg: root.querySelector("[data-sysmsg]"),
+        hov: 0, p: 0
+      };
+      this.layout();
+
+      if (window.ResizeObserver) {
+        this.ro = new ResizeObserver(() => {
+          this.layout(); this.apply(this.ctx.p);
+          if (this.svc) { this.layoutSvc(); this.applySvc(this.svc.p); }
+        });
+        this.ctx.nodes.forEach(n => n.wrap && this.ro.observe(n.wrap));
+        if (this.ctx.box) this.ro.observe(this.ctx.box);
+        this.cleanups.push(() => this.ro.disconnect());
+      }
+
+
+
+      let ticking = false;
+      const onScroll = () => {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(() => {
+          ticking = false;
+          const r = root.getBoundingClientRect();
+          const span = root.offsetHeight - window.innerHeight;
+          this.apply(span > 0 ? clamp01(-r.top / span) : 0);
+          const sec = this.svc && this.svc.section;
+          if (sec) {
+            this.layoutSvc();
+            const b = sec.getBoundingClientRect();
+            this.applySvc(clamp01((window.innerHeight * 0.88 - b.top) / (b.height * 0.72)));
+          }
+          const dsec = this.diff && this.diff.section;
+          if (dsec) {
+            const b = dsec.getBoundingClientRect();
+            this.applyDiff(clamp01((window.innerHeight * 0.9 - b.top) / (b.height * 0.62)));
+          }
+          if (this.proc && this.proc.section) this.applyProc();
+          this.applyReveal(false);
+        });
+      };
+      // el progreso se mide con getBoundingClientRect, así que sirve cualquier contenedor que scrollee
+      const targets = [window, document];
+      for (let el = root.parentElement; el; el = el.parentElement) {
+        const ov = getComputedStyle(el).overflowY;
+        if (ov === "auto" || ov === "scroll") targets.push(el);
+      }
+      if (!this.reduced) targets.forEach(t => t.addEventListener("scroll", onScroll, { passive: true }));
+      window.addEventListener("resize", onScroll);
+      this.cleanups.push(() => {
+        targets.forEach(t => t.removeEventListener("scroll", onScroll));
+        window.removeEventListener("resize", onScroll);
+      });
+
+      this.ctx.nodes.forEach((n, idx) => {
+        if (!n.wrap) return;
+        const enter = () => { this.ctx.hov = idx + 1; this.apply(this.ctx.p); };
+        const leave = () => { this.ctx.hov = 0; this.apply(this.ctx.p); };
+        n.wrap.addEventListener("mouseenter", enter);
+        n.wrap.addEventListener("mouseleave", leave);
+        this.cleanups.push(() => { n.wrap.removeEventListener("mouseenter", enter); n.wrap.removeEventListener("mouseleave", leave); });
+      });
+
+      this.svc = {
+        section: document.querySelector("[data-svcsection]"),
+        stack: document.querySelector("[data-svcstack]"),
+        svg: document.querySelector("[data-svcsvg]"),
+        spineBase: document.querySelector('[data-spine="base"]'),
+        spineSig: document.querySelector('[data-spine="sig"]'),
+        count: document.querySelector("[data-svccount]"),
+        mods: [1, 2, 3, 4].map(i => ({
+          wrap: document.querySelector('[data-svc="' + i + '"]'),
+          mod: document.querySelector('[data-svcmod="' + i + '"]'),
+          tag: document.querySelector('[data-svctag="' + i + '"]'),
+          state: document.querySelector('[data-svcstate="' + i + '"]'),
+          dot: document.querySelector('[data-svcdot="' + i + '"]'),
+          branch: document.querySelector('[data-branch="' + i + '"]'),
+          arrow: document.querySelector('[data-svcarrow="' + i + '"]'),
+          tap: document.querySelector('[data-svctap="' + i + '"]')
+        })),
+        hov: 0, frac: [0, 0, 0, 0], p: 0
+      };
+      this.layoutSvc();
+      if (this.ro && this.svc.stack) {
+        this.svc.mods.forEach(m => m.wrap && this.ro.observe(m.wrap));
+        this.ro.observe(this.svc.stack);
+      }
+      this.svc.mods.forEach((m, idx) => {
+        if (!m.wrap) return;
+        const enter = () => { this.svc.hov = idx + 1; this.applySvc(this.svc.p); };
+        const leave = () => { this.svc.hov = 0; this.applySvc(this.svc.p); };
+        m.wrap.addEventListener("mouseenter", enter);
+        m.wrap.addEventListener("mouseleave", leave);
+        this.cleanups.push(() => { m.wrap.removeEventListener("mouseenter", enter); m.wrap.removeEventListener("mouseleave", leave); });
+      });
+
+      this.diff = {
+        section: document.querySelector("[data-diffsection]"),
+        cells: [1, 2, 3, 4, 5, 6].map(i => ({
+          el: document.querySelector('[data-diff="' + i + '"]'),
+          cur: document.querySelector('[data-diffcur="' + i + '"]')
+        })),
+        matrix: document.querySelector("[data-diffmatrix]"),
+        hov: 0, p: 0
+      };
+      this.diff.cells.forEach((c, idx) => {
+        if (!c.el) return;
+        const enter = () => { this.diff.hov = idx + 1; this.applyDiff(this.diff.p); };
+        const leave = () => { this.diff.hov = 0; this.applyDiff(this.diff.p); };
+        c.el.addEventListener("mouseenter", enter);
+        c.el.addEventListener("mouseleave", leave);
+        this.cleanups.push(() => { c.el.removeEventListener("mouseenter", enter); c.el.removeEventListener("mouseleave", leave); });
+      });
+
+      this.proc = {
+        section: document.querySelector("[data-procsection]"),
+        steps: [1, 2, 3].map(i => document.querySelector('[data-step="' + i + '"]')),
+        num: document.querySelector("[data-procnum]"),
+        label: document.querySelector("[data-proclabel]"),
+        state: document.querySelector("[data-procstate]"),
+        fill: document.querySelector("[data-procfill]"),
+        cur: document.querySelector("[data-proccur]"),
+        pips: [1, 2, 3].map(i => document.querySelector('[data-procpip="' + i + '"]')),
+        ends: [1, 2].map(i => document.querySelector('[data-procend="' + i + '"]')),
+        active: 0
+      };
+
+      this.reveal = {
+        rows: [1, 2, 3, 4].map(i => document.querySelector('[data-res="' + i + '"]')),
+        quotes: [1, 2].map(i => document.querySelector('[data-test="' + i + '"]')),
+        ctaLine: document.querySelector("[data-ctaline]"),
+        ctaSection: document.querySelector("[data-ctasection]")
+      };
+
+      document.querySelectorAll("[data-faq]").forEach(d => {
+        const sign = d.querySelector("[data-faqsign]");
+        const sum = d.querySelector("summary");
+        const sync = () => {
+          if (!sign) return;
+          sign.textContent = d.open ? "–" : "+";
+          sign.style.color = d.open ? "#FF4D3D" : "#6B7280";
+          sign.style.transform = d.open ? "rotate(180deg)" : "rotate(0deg)";
+          if (sum) sum.style.color = d.open ? "#F7F8FA" : "#E6E8EC";
+        };
+        d.addEventListener("toggle", sync);
+        this.cleanups.push(() => d.removeEventListener("toggle", sync));
+        sync();
+      });
+
+      if (this.reduced) { this.apply(1); this.applySvc(1); this.applyDiff(1); this.applyProc(); this.applyReveal(true); } else onScroll();
+    }
+  }
+
+  // la infraestructura del hero baja como espina y se ramifica hacia cada módulo
+  layoutSvc() {
+    const s = this.svc;
+    if (!s || !s.stack || !s.svg) return;
+    const o = s.svg.getBoundingClientRect();
+    const RAIL = 15, B = 10;
+    const r = s.mods.map(m => {
+      const b = m.mod.getBoundingClientRect();
+      return { x: b.left - o.left, y: b.top - o.top, h: b.height };
+    });
+    const ys = r.map(v => Math.round(v.y + Math.min(46, v.h / 2)));
+    const top = 0, bottom = ys[3];
+    s.spineBase.setAttribute("points", RAIL + "," + top + " " + RAIL + "," + bottom);
+    s.spineSig.setAttribute("points", RAIL + "," + top + " " + RAIL + "," + bottom);
+    s.frac = ys.map(y => (y - top) / Math.max(1, bottom - top));
+    s.mods.forEach((m, i) => {
+      const y = ys[i], x = Math.round(r[i].x);
+      m.branch.setAttribute("points", [RAIL + "," + (y - B), (RAIL + B) + "," + y, x + "," + y].join(" "));
+      m.arrow.setAttribute("points", [x + "," + y, (x - 7) + "," + (y - 4), (x - 7) + "," + (y + 4)].join(" "));
+      m.tap.setAttribute("cx", RAIL); m.tap.setAttribute("cy", y - B);
+    });
+  }
+
+  applySvc(p) {
+    const s = this.svc;
+    if (!s || !s.section) return;
+    s.p = p;
+    const travel = clamp01((p - 0.04) / 0.78);
+    s.spineSig.setAttribute("stroke-dashoffset", 9 - travel * 109);
+    s.spineSig.setAttribute("opacity", travel > 0 && travel < 1 ? 1 : 0);
+    s.spineBase.setAttribute("stroke", travel >= 1 ? "rgba(255,138,61,.24)" : "rgba(230,232,236,.16)");
+    let n = 0;
+    s.mods.forEach((m, i) => {
+      const idx = i + 1, on = travel >= s.frac[i] && travel > 0;
+      if (on) n++;
+      const hovered = s.hov === idx;
+      m.mod.style.borderColor = hovered ? (on ? "rgba(255,77,61,.7)" : "rgba(230,232,236,.24)") : on ? "rgba(255,77,61,.42)" : "rgba(230,232,236,.09)";
+      m.mod.style.backgroundColor = on ? "#1C1A1C" : "#171B21";
+      m.mod.style.transform = hovered ? "translateY(-2px)" : "translateY(0)";
+      m.mod.style.boxShadow = (hovered ? "0 18px 38px rgba(0,0,0,.54)" : "0 14px 30px rgba(0,0,0,.46)") + ", 0 1px 0 rgba(230,232,236,.05) inset";
+      let op = on ? 1 : 0.6;
+      if (s.hov) op = hovered ? 1 : op * 0.6;
+      m.mod.style.opacity = op;
+      m.state.textContent = on ? "ACTIVO" : "STANDBY";
+      m.state.style.color = on ? HOT : "#6B7280";
+      m.dot.style.background = on ? HOT : OFF;
+      m.dot.style.animation = on && !this.reduced ? "sup-pulse 2.6s ease-out infinite" : "none";
+      m.branch.setAttribute("stroke", on ? "rgba(255,138,61,.30)" : "rgba(230,232,236,.16)");
+      m.branch.setAttribute("opacity", s.hov ? (hovered ? 1 : 0.35) : 1);
+      m.arrow.setAttribute("fill", on ? WARM : OFF);
+      if (idx > 1) {
+        m.tag.style.color = hovered ? HOT : on ? "#E6E8EC" : "#9BA3AE";
+        m.tag.style.borderColor = hovered ? "rgba(255,77,61,.45)" : on ? "rgba(230,232,236,.24)" : "rgba(230,232,236,.14)";
+      } else {
+        m.tag.style.backgroundColor = hovered ? "#FF4D3D" : "transparent";
+        m.tag.style.color = hovered ? "#111418" : HOT;
+      }
+    });
+    if (s.count) s.count.textContent = n + " / 4 ACTIVOS";
+  }
+  componentWillUnmount() { (this.cleanups || []).forEach(f => f()); }
+
+  // el recorrido extra del hero solo existe si hay animación real que recorrer
+  sizeRunway() {
+    const root = this.root, shell = root && root.firstElementChild;
+    if (!shell) return;
+    const tall = shell.offsetHeight > window.innerHeight + 20;
+    root.style.height = (this.reduced || tall) ? "auto" : "190vh";
+  }
+
+  // conductos derivados de las cajas reales, con quiebres diagonales (lenguaje cursor)
+  layout() {
+    this.sizeRunway();
+    const ctx = this.ctx, box = ctx && ctx.box;
+    if (!box) return;
+    const svg = box.querySelector("[data-svg]");
+    const o = svg.getBoundingClientRect();
+    const r = ctx.nodes.map(n => {
+      const b = n.mod.getBoundingClientRect();
+      return { x: b.left - o.left, y: b.top - o.top, w: b.width, h: b.height };
+    });
+    const B = 12, RAIL = 13;
+    const seg = [];
+    const FR = [[0.20, 0.30], [0.30, 0.26], [0.26, 0.30]];
+    for (let i = 0; i < 3; i++) {
+      const a = r[i], c = r[i + 1];
+      const sx = Math.round(a.x + a.w * FR[i][0]), ex = Math.round(c.x + c.w * FR[i][1]);
+      const sy = Math.round(a.y + a.h), ey = Math.round(c.y);
+      const my = Math.round((sy + ey) / 2), d = ex >= sx ? 1 : -1;
+      const b = Math.min(B, Math.abs(ex - sx) / 2, (ey - sy) / 2);
+      seg.push({
+        pts: [sx + "," + sy, sx + "," + (my - b), (sx + d * b) + "," + my, (ex - d * b) + "," + my, ex + "," + (my + b), ex + "," + ey].join(" "),
+        nx: sx, ny: sy,
+        arrow: [ex + "," + ey, (ex - 4) + "," + (ey - 7), (ex + 4) + "," + (ey - 7)].join(" ")
+      });
+    }
+    const y4 = Math.round(r[3].y + r[3].h / 2), y1 = Math.round(r[0].y + r[0].h / 2);
+    const x4 = Math.round(r[3].x), x1 = Math.round(r[0].x), bb = 10;
+    seg.push({
+      pts: [x4 + "," + y4, (RAIL + bb) + "," + y4, RAIL + "," + (y4 - bb), RAIL + "," + (y1 + bb), (RAIL + bb) + "," + y1, x1 + "," + y1].join(" "),
+      nx: x4, ny: y4,
+      arrow: [x1 + "," + y1, (x1 - 7) + "," + (y1 - 4), (x1 - 7) + "," + (y1 + 4)].join(" ")
+    });
+
+    seg.forEach((s, i) => {
+      ["base", "sig", "pulse"].forEach(k => {
+        const el = box.querySelector("[data-" + k + '="' + (i + 1) + '"]');
+        if (el) el.setAttribute("points", s.pts);
+      });
+      const n = ctx.nodes[i];
+      if (n.jnode) { n.jnode.setAttribute("cx", s.nx); n.jnode.setAttribute("cy", s.ny); }
+      if (n.arrow) n.arrow.setAttribute("points", s.arrow);
+    });
+    const ta = box.querySelector('[data-jtap="a"]'), tb = box.querySelector('[data-jtap="b"]');
+    if (ta) { ta.setAttribute("cx", RAIL); ta.setAttribute("cy", y4 - bb); }
+    if (tb) { tb.setAttribute("cx", RAIL); tb.setAttribute("cy", y1 + bb); }
+    const lb = box.querySelector("[data-fblabel]");
+    if (lb) {
+      const ly = Math.round((y1 + y4) / 2) + 54, lx = RAIL - 7;
+      lb.setAttribute("opacity", 1);
+      lb.setAttribute("x", lx); lb.setAttribute("y", ly);
+      lb.setAttribute("transform", "rotate(-90 " + lx + " " + ly + ")");
+    }
+  }
+
+  apply(p) {
+    const ctx = this.ctx;
+    if (!ctx) return;
+    ctx.p = p;
+    const f = WIN.map(([a, b]) => clamp01((p - a) / (b - a)));
+    const st = [
+      p > 0.015 ? 2 : 0,
+      f[0] >= 1 ? 2 : f[0] > 0 ? 1 : 0,
+      f[1] >= 1 ? 2 : f[1] > 0 ? 1 : 0,
+      f[2] >= 1 ? 2 : f[2] > 0 ? 1 : 0
+    ];
+    const lead = f[3] >= 1 ? 1 : st.lastIndexOf(2) + 1;
+    const hov = ctx.hov;
+
+    ctx.nodes.forEach((n, i) => {
+      const s = st[i], idx = i + 1, active = s === 2, warming = s === 1;
+      const hovered = hov === idx;
+      n.mod.style.borderColor = hovered ? (active ? "rgba(255,77,61,.72)" : "rgba(230,232,236,.24)")
+        : active ? "rgba(255,77,61,.46)" : warming ? "rgba(255,138,61,.28)" : "rgba(230,232,236,.09)";
+      n.mod.style.backgroundColor = active ? "#1C1A1C" : "#171B21";
+      n.mod.style.boxShadow = (hovered ? "0 18px 38px rgba(0,0,0,.54)" : active ? "0 16px 34px rgba(0,0,0,.5)" : "0 14px 30px rgba(0,0,0,.46)") + ", 0 1px 0 rgba(230,232,236,.05) inset";
+      let op = active ? (idx === lead ? 1 : 0.84) : warming ? 0.88 : 0.62;
+      if (hov) op = hov === idx ? 1 : op * 0.55;
+      n.mod.style.opacity = op;
+      n.mod.style.transform = hov === idx ? "translateY(-2px)" : "translateY(0)";
+      n.dot.style.background = active ? HOT : warming ? "rgba(255,138,61,.5)" : OFF;
+      n.dot.style.animation = active && idx === lead ? "sup-pulse 2.6s ease-out infinite" : "none";
+      n.state.textContent = active ? "ACTIVO" : warming ? "ACTIVANDO" : "STANDBY";
+      n.state.style.color = active ? HOT : warming ? WARM : "#6B7280";
+      if (n.jnode) n.jnode.setAttribute("fill", active ? HOT : OFF);
+      if (n.arrow) n.arrow.setAttribute("fill", f[i] >= 1 ? WARM : OFF);
+    });
+
+    // tramo sólido que viaja por el conducto (no colorea la línea entera)
+    ctx.sigs.forEach(el => {
+      const i = +el.getAttribute("data-sig") - 1;
+      const dash = i === 3 ? 12 : 16;
+      el.setAttribute("stroke-dashoffset", dash - f[i] * (100 + dash));
+      let o = f[i] > 0 && f[i] < 1 ? 1 : 0;
+      if (hov && o) o = this.lit(hov, i + 1) ? 1 : 0.4;
+      el.setAttribute("opacity", o);
+    });
+    ctx.pulses.forEach(el => {
+      const i = +el.getAttribute("data-pulse") - 1;
+      let o = f[i] >= 1 ? 0.75 : 0;
+      if (hov && !this.lit(hov, i + 1)) o *= 0.35;
+      el.setAttribute("opacity", o);
+    });
+    ctx.bases.forEach(el => {
+      const i = +el.getAttribute("data-base");
+      el.setAttribute("stroke", f[i - 1] >= 1 ? "rgba(255,138,61,.24)" : "rgba(230,232,236,.16)");
+      el.setAttribute("opacity", hov ? (this.lit(hov, i) ? 1 : 0.35) : 1);
+    });
+
+    if (ctx.sysmsg) {
+      const done = f[3] >= 1;
+      ctx.sysmsg.textContent = done ? "CIRCUITO EN OPERACIÓN" : st[0] === 2 ? "ENCENDIENDO" : "EN STANDBY";
+      ctx.sysmsg.style.color = st[0] === 2 ? WARM : "#6B7280";
+      ctx.sysdot.style.background = st[0] === 2 ? HOT : OFF;
+      ctx.sysdot.style.animation = done ? "sup-idle 3.4s ease-in-out infinite" : "none";
+    }
+  }
+
+  lit(hov, i) { return hov === i || hov === (i % 4) + 1; }
+
+  // la matriz se dibuja por líneas a medida que entra
+  applyDiff(p) {
+    const d = this.diff;
+    if (!d || !d.section) return;
+    d.p = p;
+    const RULE = "rgba(17,20,24,.14)";
+    if (d.matrix) {
+      const on = p > 0.02;
+      d.matrix.style.borderTopColor = on ? RULE : "transparent";
+      d.matrix.style.borderLeftColor = on ? RULE : "transparent";
+    }
+    d.cells.forEach((c, i) => {
+      if (!c.el) return;
+      const drawn = p > 0.06 + i * 0.1, idx = i + 1, hovered = d.hov === idx;
+      c.el.style.borderRightColor = drawn ? RULE : "transparent";
+      c.el.style.borderBottomColor = drawn ? RULE : "transparent";
+      c.el.style.backgroundColor = hovered ? "#FFFFFF" : "transparent";
+      c.el.style.boxShadow = hovered ? "inset 2px 0 0 #FF4D3D" : "none";
+      if (c.cur) c.cur.style.opacity = hovered ? 1 : 0;
+    });
+  }
+
+  // telemetría, quotes y señal del CTA: se revelan al entrar al eje de lectura
+  applyReveal(all) {
+    const r = this.reveal;
+    if (!r) return;
+    const vh = window.innerHeight;
+    const seen = el => el && el.getBoundingClientRect().top < vh * 0.86;
+    r.rows.forEach(el => {
+      if (!el) return;
+      const on = all || seen(el);
+      el.style.opacity = on ? 1 : 0.25;
+      el.style.borderTopColor = on ? "rgba(230,232,236,.14)" : "transparent";
+      if (el.style.borderBottomWidth !== "" || el.getAttribute("data-res") === "4") {
+        el.style.borderBottomColor = on ? "rgba(230,232,236,.14)" : "transparent";
+      }
+    });
+    r.quotes.forEach(el => { if (el) el.style.opacity = all || seen(el) ? 1 : 0.3; });
+    if (r.ctaLine && r.ctaSection) {
+      const b = r.ctaSection.getBoundingClientRect();
+      const p = all ? 1 : clamp01((vh * 0.8 - b.top) / Math.max(1, b.height * 0.5));
+      r.ctaLine.style.height = Math.round(p * 100) + "%";
+    }
+  }
+
+  // scrollytelling del proceso: el paso más cercano al eje de lectura toma el protagonismo
+  applyProc() {
+    const s = this.proc;
+    if (!s || !s.section || !s.steps[0]) return;
+    const axis = window.innerHeight * 0.46;
+    let best = 0, bestD = Infinity, within = 0;
+    s.steps.forEach((el, i) => {
+      const b = el.getBoundingClientRect();
+      const d = Math.abs(b.top + b.height / 2 - axis);
+      if (d < bestD) { bestD = d; best = i; within = clamp01((axis - b.top) / b.height); }
+    });
+    const active = best + 1;
+    const prog = clamp01((best + within) / 3);
+    s.steps.forEach((el, i) => { el.style.opacity = i === best ? 1 : 0.34; });
+    if (s.num) s.num.textContent = "0" + active;
+    if (s.state) s.state.textContent = "PASO 0" + active + " / 03";
+    if (s.label) s.label.textContent = active === 3 ? "OPERACIÓN ACTIVA" : "EN CURSO";
+    if (s.fill) s.fill.style.height = Math.round(prog * 100) + "%";
+    if (s.cur) s.cur.style.top = Math.round(prog * 100) + "%";
+    s.pips.forEach((p, i) => { if (p) p.style.backgroundColor = i <= best ? (i === best ? "#FF4D3D" : "#FF8A3D") : "rgba(230,232,236,.16)"; });
+    s.ends.forEach(e => { if (e) e.style.background = active === 3 ? "#FF4D3D" : "#3A4048"; });
+    s.active = active;
+  }
+}
+</script>
+</body>
+</html>

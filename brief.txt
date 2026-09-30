@@ -1,0 +1,154 @@
+suprads 	B R I E F D E D E S A R R O L L O · A G O S T O 2 0 2 6
+Landing Suprads 2.0 — Prototipo v1
+DOCUMENTO DE HANDOFF PARA DESARROLLO · APTO PARA COMPARTIR CON CLAUDE
+Este documento contiene todo el contexto necesario para construir el primer prototipo de la nueva landing de
+Suprads. Está pensado para que el desarrollador lo comparta directamente con Claude (u otra herramienta de IA)
+junto con el archivo base suprads-landing-v1.html, y para que cualquier decisión de diseño o contenido se
+resuelva sin ida y vuelta.
+01 Contexto del proyecto
+Suprads S.R.L. es una agencia argentina que se relanza como empresa de sistemas de crecimiento
+productizados para Argentina y LATAM, con cuatro servicios: Sistemas de Captación por Performance (solo por
+resultados), Automatización & Chatbots (implementación + abono), Performance Ads en Meta/Google/TikTok (fee
+base + variable) y Web & E-commerce (precio fijo por proyecto).
+Referencia estética y estructural: uproas.io — dark/premium, promesa fuerte, social proof constante,
+producto claro. Se adapta la lógica, no se copia el sitio.
+→
+Diferencia clave de conversión: la landing no vende precio; vende la llamada de diagnóstico (Calendly). No
+se muestra ningún precio.
+→
+Alcance v1: one-page. Fase 2 (fuera de este alcance): home + una página por servicio.	→
+Idioma: español rioplatense moderado (voseo), tono directo y honesto, sin jerga de agencia.	→
+
+-- 1 of 5 --
+
+02 Dirección de diseño
+Dark/premium construido desde cero. Un solo color de acento con presencia fuerte, mucho aire, jerarquía
+tipográfica marcada. El lenguaje visual es de "sistema / telemetría": los datos y etiquetas se muestran en
+monospace, como un dashboard que reporta en vivo.
+TOKEN 	VALOR 	USO
+--bg 	#0C0E13 	Fondo base (grafito azulado profundo, no negro puro)
+--bg-raise 	#11141B 	Fondos elevados / secciones alternas
+--surface 	#151924 	Cards y paneles
+--text 	#E9EBF1 	Texto principal
+--muted 	#9AA3B4 	Texto secundario
+--accent 	#E8A33D 	Acento único (ámbar). CTAs, etiquetas, números, detalles
+--line 	rgba(233,235,241,.09) 	Bordes y divisores
+TIPOGRAFÍA (GOOGLE FONTS) 	USO
+Archivo (variable, wdth 110–118, wght 600–800) 	Titulares y logo. Expandida, con carácter.
+Instrument Sans (400–600) 	Cuerpo de texto y botones.
+JetBrains Mono (400–500) 	Eyebrows, etiquetas, métricas, microcopy técnico.
+P R O H I B I C I O N E S E X P L Í C I T A S
+Firma visual del hero: un panel estilo "sistema en vivo" que muestra el pipeline de captación en 4 etapas
+(Captación → Conversión → Filtrado y cierre previo → Optimización continua) con etiquetas monospace, estados
+"ACTIVO" y un punto ámbar con pulso animado. Es el producto convertido en interfaz.
+Gradientes violeta/cian o cualquier estética "IA genérica"; ilustraciones o fotos de stock.	✕
+Precios, planes o montos en cualquier sección.	✕
+Urgencia falsa: contadores, "spots limitados", popups agresivos.	✕
+Métricas inventadas presentadas como reales (los placeholders se marcan como tales, ver 06).	✕
+
+-- 2 of 5 --
+
+03 Estructura y contenido (orden exacto)
+SECCIÓN 	CONTENIDO DEFINIDO
+Nav fija 	Logo "suprads" (con "ads" en ámbar) + anclas: Servicios · Cómo trabajamos · Resultados · FAQ +
+botón "Agendar llamada". Fondo con blur al scrollear.
+Hero 	H1: "Sistemas que traen clientes. No reportes que expliquen por qué no llegaron." (segunda frase en
+ámbar). Sub: "Construimos y operamos el circuito completo: captación, conversión, automatización y
+cierre previo. Y en captación, nuestro modelo es directo: cobramos cuando ganás." CTA primario
+"Agendar llamada de diagnóstico" + secundario "Escribinos por WhatsApp". Nota mono: "30 minutos ·
+sin costo · sin compromiso". A la derecha, el panel de sistema (ver 02). Sin formularios.
+Logos 	Marquee infinito con máscara de fade lateral: "Empresas que confiaron en Suprads". v1 usa
+wordmarks placeholder.
+Servicios 	4 cards, cada una con: título, etiqueta mono del modelo comercial ("Solo por resultados" /
+"Implementación + abono" / "Fee base + variable" / "Precio fijo por proyecto"), párrafo y 3 bullets con
+flecha ámbar. Copy completo ya redactado en el archivo base.
+Diferenciales 	Grilla 3×2 sobre fondo elevado: riesgo compartido de verdad · operación de punta a punta ·
+infraestructura blindada (tracking/CAPI) · transparencia total de costos · equipo directo · números en
+los que confiar.
+Proceso 	3 pasos numerados en mono (01/02/03): llamada de diagnóstico → propuesta a medida (72 hs
+hábiles) → implementación y operación con métricas abiertas.
+Resultados 	Grilla de 4 stats con número grande en mono ámbar + descripción + rubro anonimizado. Nota al pie
+sobre confidencialidad.
+Testimonios 	2 quotes con cargo + rubro (sin nombres hasta tener autorización).
+CTA band 	"Empecemos por los números." + botón Calendly. Borde y fondo con tinte ámbar sutil.
+FAQ 	6 <details> nativos: modelo de performance · quién paga pauta y herramientas · trabajo fuera de
+Argentina · qué pasa sin resultados · cuánto tarda · qué necesita el cliente. Respuestas ya
+redactadas.
+Footer 	Logo + descripción + links de secciones y redes + legal "© 2026 Suprads S.R.L.".
+Todo el copy definitivo ya está escrito dentro de suprads-landing-v1.html. No reescribir sin aprobación de dirección; sí se
+puede ajustar microcopy por razones de layout.
+
+-- 3 of 5 --
+
+04 Requisitos técnicos
+05 Conversión
+06 Placeholders e insumos pendientes
+El archivo base marca todos los pendientes con comentarios TODO: . Ninguno bloquea el desarrollo del prototipo;
+se integran cuando dirección los entregue.
+PLACEHOLDER 	QUÉ VA AHÍ 	PROVEE
+{{CALENDLY_URL}} 	URL real de Calendly (todas las instancias del CTA) 	Dirección
+{{WHATSAPP_URL}} 	Link wa.me del número comercial 	Dirección
+Marquee de logos 	Logos reales autorizados (SVG/WebP, monocromos al gris del sistema) 	Dirección
+Sección Resultados Métricas reales verificables. Las actuales son ilustrativas: no publicar sin
+reemplazar
+Dirección
+Testimonios 	Quotes reales con autorización (nombre o cargo + rubro) 	Dirección
+Favicon / OG image A generar con la identidad nueva (logo sobre --bg) 	Desarrollo
+Mobile-first obligatorio: la mayoría del tráfico llegará desde pauta en celular. Breakpoints de referencia en el
+archivo base: 900/820/700/520px.
+→
+Sin frameworks pesados ni build obligatorio. El prototipo v1 es un único HTML con CSS/JS embebidos; si
+se migra al stack propio (Astro/Next/otro), mantener el resultado visual idéntico y el peso bajo.
+→
+Animaciones sobrias: reveals on-scroll con IntersectionObserver, hovers en cards, marquee CSS, pulso del
+panel. Todo con fallback prefers-reduced-motion (ya implementado en la base).
+→
+Performance: objetivo Lighthouse mobile ≥90. Imágenes lazy y en WebP/AVIF cuando entren los logos reales;
+sin videos en v1; fuentes con display=swap y preconnect.
+→
+SEO: title, meta description y OG tags ya definidos en la base; jerarquía h1→h3 correcta; un solo h1.	→
+Accesibilidad: contraste AA sobre fondo oscuro, :focus-visible ámbar, aria-labels en navs y marquee,
+FAQ con elementos nativos.
+→
+Medición (antes de publicar): instalar píxel de Meta + etiqueta de Google con evento de conversión en el
+click a Calendly ( schedule_click ) y en el click a WhatsApp ( whatsapp_click ). La configuración fina la
+define dirección.
+→
+CTA primario único en toda la página: "Agendar llamada" → Calendly (abre en pestaña nueva). Aparece en
+nav, hero, CTA band y footer.
+→
+WhatsApp como canal secundario, visible pero subordinado (botón ghost en hero y link en footer).	→
+Evaluar en v1.1 el embed nativo de Calendly en la CTA band si el peso de página lo permite; en v1, botón
+simple.
+→
+
+-- 4 of 5 --
+
+07 Cómo trabajar con Claude
+P R O M P T S U G E R I D O P A R A A R R A N C A R
+"Te comparto el brief de la landing de Suprads (PDF) y el prototipo base suprads-landing-
+v1.html. Respetá los tokens de diseño, el copy y las prohibiciones del brief. Tarea:
+[describir el ajuste o la migración al stack]. Mantené mobile-first, prefers-reduced-motion
+y el objetivo Lighthouse ≥90."
+08 Criterios de aceptación del prototipo
+Suprads S.R.L.
+Brief de desarrollo — Landing 2.0. Cualquier duda de criterio se resuelve con dirección antes de
+implementar.
+HANDOFF DE
+DESARROLLO
+AGOSTO 2026 · V1.0
+Adjuntar siempre este PDF + el HTML base en la conversación: el brief define el criterio; el HTML define el
+punto de partida.
+→
+Pedir cambios por sección (hero, servicios, FAQ…) en lugar de regenerar la página entera: menos regresiones.	→
+Ante cualquier decisión no cubierta por este brief (nuevo contenido, cambiar copy, sumar secciones), escalar a
+dirección antes de implementar.
+→
+Se ve correcta en 390px y 1440px; sin scroll horizontal en ningún breakpoint.	✓
+Todos los CTAs apuntan a Calendly/WhatsApp (o placeholder documentado) y abren en pestaña nueva.	✓
+Sin precios, sin urgencia falsa, sin assets de stock; paleta y tipografías exactas del punto 02.	✓
+Lighthouse mobile ≥90 en Performance y Accessibility; reveals desactivados con reduced-motion.	✓
+Placeholders TODO intactos y visibles para la integración posterior de insumos reales.	✓
+
+-- 5 of 5 --
+
