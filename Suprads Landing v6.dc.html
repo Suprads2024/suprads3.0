@@ -31,6 +31,7 @@ summary::-webkit-details-marker{display:none}
 details[open] summary span{transform:rotate(45deg)}
 input,textarea,select,button{font-family:inherit}
 [data-rv]{will-change:opacity,transform,filter}
+h1[data-fitting]{visibility:hidden}
 @keyframes suprail{0%{transform:translate3d(0,0,0)}100%{transform:translate3d(-50%,0,0)}}
 @keyframes suprailrev{0%{transform:translate3d(-50%,0,0)}100%{transform:translate3d(0,0,0)}}
 @media (max-width:960px){[data-nav-desk]{display:none!important}}
@@ -88,7 +89,7 @@ input,textarea,select,button{font-family:inherit}
     <div style="position:relative;max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(330px,100%),1fr));gap:clamp(24px,3.2vw,56px);align-items:center">
       <div>
         <div style="font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:#5C93FF;color:#7FA6FF">Para pymes, e-commerce e infoproductores</div>
-        <h1 style="margin:16px 0 0;font-family:'Sora','Manrope',sans-serif;font-weight:800;letter-spacing:-.025em;line-height:1.1;text-wrap:balance"><span data-fit="1" style="display:block;font-size:clamp(30px,3.9vw,52px);font-weight:600;color:#C6D5F2;white-space:nowrap;line-height:1">Sistemas de</span><span data-fit="1" style="display:block;margin-top:.04em;font-size:clamp(30px,3.9vw,52px);white-space:nowrap;line-height:1">captación.</span><span data-hero-sub="1" style="display:block;margin-top:16px;font-size:clamp(21px,2.4vw,32px);color:#7FA6FF">De la estrategia a la operación.</span></h1>
+        <h1 data-fitting="1" style="margin:16px 0 0;font-family:'Sora','Manrope',sans-serif;font-weight:800;letter-spacing:-.025em;line-height:1.1;text-wrap:balance"><span data-fit="1" style="display:block;font-size:clamp(30px,3.9vw,52px);font-weight:600;color:#C6D5F2;white-space:nowrap;line-height:1">Sistemas de</span><span data-fit="1" style="display:block;margin-top:.04em;font-size:clamp(30px,3.9vw,52px);white-space:nowrap;line-height:1">captación<span style="display:inline-block;width:0;font-size:.55em;overflow:visible">.</span></span><span data-hero-sub="1" style="display:block;margin-top:16px;font-size:clamp(21px,2.4vw,32px);color:#7FA6FF">De la estrategia a la operación<span style="display:inline-block;width:0;font-size:.55em;overflow:visible">.</span></span></h1>
         <p style="margin:20px 0 0;max-width:560px;font-size:clamp(15px,1.25vw,18px);line-height:1.65;color:#C6D5F2;text-wrap:pretty">Combinamos criterio comercial, integración tecnológica y ejecución especializada. Un equipo que diseña el recorrido, pone las herramientas a trabajar y ajusta cada etapa con datos.</p>
         <p style="margin:12px 0 0;max-width:560px;font-size:14.5px;line-height:1.6;color:#93A2C0;text-wrap:pretty">Publicidad digital, desarrollo web y automatización para captar consultas calificadas y vender online.</p>
         <div data-hero-ctas="1" style="display:flex;flex-wrap:wrap;gap:12px;margin-top:28px">
@@ -547,32 +548,46 @@ input,textarea,select,button{font-family:inherit}
   }
   fitHero() {
     const lines = [...document.querySelectorAll('h1 [data-fit]')];
-    if (!lines.length) return;
-    const ref = [...lines[0].parentElement.children].find(c => !c.hasAttribute('data-fit'));
-    let W = lines[0].parentElement.clientWidth;
-    if (ref) {
-      ref.style.display = 'inline-block';
-      ref.style.whiteSpace = 'nowrap';
-      W = Math.min(W, ref.getBoundingClientRect().width);
-      ref.style.display = 'block';
-      ref.style.whiteSpace = '';
+    const ref = document.querySelector('[data-hero-sub]');
+    if (!lines.length || !ref) return;
+    const cv = this._cv || (this._cv = document.createElement('canvas'));
+    const ctx = cv.getContext('2d');
+    // el espaciado se expresa en em para que escale con el tamaño
+    [...lines, ref].forEach(e => { e.style.letterSpacing = '-0.025em'; });
+    // borde derecho de la TINTA de la última letra (sin el punto colgado)
+    const ink = (el) => {
+      const tn = [...el.childNodes].filter(n => n.nodeType === 3 && n.textContent.trim()).pop();
+      if (!tn) return 0;
+      const t = tn.textContent.replace(/\s+$/, '');
+      const rg = document.createRange();
+      rg.setStart(tn, t.length - 1); rg.setEnd(tn, t.length);
+      const box = rg.getBoundingClientRect();
+      const cs = getComputedStyle(el);
+      ctx.font = cs.fontStyle + ' ' + cs.fontWeight + ' 1000px ' + cs.fontFamily;
+      return box.left + ctx.measureText(t[t.length - 1]).actualBoundingBoxRight / 1000 * parseFloat(cs.fontSize);
+    };
+    for (let it = 0; it < 3; it++) {
+      const left = lines[0].parentElement.getBoundingClientRect().left;
+      const target = ink(ref) - left;
+      if (!(target > 0)) return;
+      lines.forEach(l => {
+        const fs = parseFloat(getComputedStyle(l).fontSize);
+        const w = ink(l) - left;
+        const nf = fs * target / w;
+        if (w > 0 && Math.abs(nf - fs) > 0.3) l.style.fontSize = nf.toFixed(3) + 'px';
+      });
     }
-    const CAP = 118;
-    const sizes = lines.map(l => {
-      l.style.fontSize = '100px';
-      l.style.display = 'inline-block';
-      const w = l.getBoundingClientRect().width;
-      l.style.display = 'block';
-      return w > 0 ? 100 * W / w : 0;
-    });
-    const k = Math.min(1, CAP / Math.max(...sizes));
-    lines.forEach((l, i) => { l.style.fontSize = (sizes[i] * k).toFixed(2) + 'px'; });
   }
   componentDidMount() {
     this.arm();
     this.fitHero();
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => this.fitHero());
-    setTimeout(() => this.fitHero(), 600);
+    // el titular se muestra recién cuando la fuente cargó y el tamaño ya está calculado
+    const showH1 = () => { this.fitHero(); this.fitHero(); const h = document.querySelector('h1[data-fitting]'); if (h) h.removeAttribute('data-fitting'); };
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(showH1); else showH1();
+    setTimeout(showH1, 1500);
+    let n = 0;
+    this._fitTick = setInterval(() => { this.fitHero(); if (++n > 16) clearInterval(this._fitTick); }, 400);
+    if (document.fonts) document.fonts.addEventListener('loadingdone', () => this.fitHero());
     this._fit = () => this.fitHero();
     window.addEventListener('resize', this._fit);
     this._rs = () => { if (window.innerWidth > 960 && this.state.menuOpen) this.setState({ menuOpen: false }); };
